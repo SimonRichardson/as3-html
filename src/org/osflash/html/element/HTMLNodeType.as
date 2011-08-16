@@ -47,7 +47,7 @@ package org.osflash.html.element
 				case STYLE: return 'style';
 				case SCRIPT: return 'script';
 				case BODY: return 'body';
-				case DIV: return 'div';
+				case DIV: return 'divww';
 				case SPAN: return 'span';
 				case A: return 'a';
 				case IMG: return 'img';
