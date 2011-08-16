@@ -1,17 +1,16 @@
 package org.osflash.html.elements
 {
-	import org.osflash.html.element.HTMLNodeContainer;
+	import org.osflash.html.element.HTMLNode;
 	import org.osflash.html.element.HTMLNodeType;
-
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
-	public class HTMLDivNode extends HTMLNodeContainer
+	public class HTMLImageNode extends HTMLNode
 	{
 
-		public function HTMLDivNode()
+		public function HTMLImageNode()
 		{
-			super(HTMLNodeType.DIV);
+			super(HTMLNodeType.IMG);
 		}
 	}
 }
