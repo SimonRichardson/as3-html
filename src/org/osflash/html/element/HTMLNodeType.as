@@ -28,6 +28,10 @@ package org.osflash.html.element
 
 		public static const TITLE : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0009);
 		
+		public static const BR : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0010);
+		
+		public static const P : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0011);
+		
 		private var _name : String;
 		
 		public function HTMLNodeType(type : int)
@@ -48,6 +52,8 @@ package org.osflash.html.element
 				case A: return 'a';
 				case IMG: return 'img';
 				case TITLE: return 'title';
+				case BR: return 'br';
+				case P: return 'p';
 				default:
 					throw new ArgumentError('Unknown HTMLNodeType');
 					break;

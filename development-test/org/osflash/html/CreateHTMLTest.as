@@ -29,7 +29,10 @@ package org.osflash.html
 			html.add(head);
 			
 			const body : HTMLBodyNode = new HTMLBodyNode();
-			body.add(new HTMLDivNode());
+			const div : HTMLDivNode = new HTMLDivNode();
+			div.classes.add('wrapper').add('slapper');
+			
+			body.add(div);
 			html.add(body);
 			
 			info(html.write());
