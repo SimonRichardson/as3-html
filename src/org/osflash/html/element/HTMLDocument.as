@@ -1,27 +1,31 @@
 package org.osflash.html.element
 {
 	import org.osflash.dom.dom_namespace;
+	import org.osflash.dom.element.DOMDocument;
 	import org.osflash.dom.element.IDOMElement;
 	import org.osflash.html.errors.HTMLError;
+
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
-	public class HTMLNodeContainer extends HTMLNode
+	public class HTMLDocument extends DOMDocument
 	{
-		
-		use namespace dom_namespace;
 
-		public function HTMLNodeContainer(type : HTMLNodeType)
+		use namespace dom_namespace;
+		
+		public function HTMLDocument()
 		{
-			super(type);
+			super(false);
 		}
 		
-		/**
-		 * @inheritDoc
-		 */	
-		override public function write() : XML
+		public function read(xml : XML) : void
 		{
-			const xml : XML = super.write();
+			
+		}
+			
+		public function write() : XML
+		{
+			const node : XML = <html />;
 			
 			const total : int = numChildren;
 			for(var i : int = 0; i<total; i++)
@@ -30,12 +34,12 @@ package org.osflash.html.element
 				if(child is HTMLNode)
 				{
 					const htmlChild : HTMLNode = HTMLNode(child);
-					xml.appendChild(htmlChild.write());
+					node.appendChild(htmlChild.write());
 				}
 				else throw new HTMLError('Node is not of type HTMLNode');
 			}
 			
-			return xml;
+			return node;
 		}
 	}
 }

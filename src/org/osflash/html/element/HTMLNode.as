@@ -1,8 +1,8 @@
 package org.osflash.html.element
 {
-	import org.osflash.dom.element.IDOMElementType;
 	import org.osflash.css.classes.CSSClasses;
 	import org.osflash.dom.element.DOMNode;
+	import org.osflash.dom.element.IDOMElementType;
 	import org.osflash.html.utils.getUniqueName;
 
 	/**
@@ -32,14 +32,14 @@ package org.osflash.html.element
 			_classes = new CSSClasses();
 		}
 		
-		public function read(xml : XML) : void
+		public function write() : XML
 		{
-			throw new Error('Abstract Method Error');
-		}
-		
-		public function write(xml : XML) : void
-		{
-			throw new Error('Abstract Method Error');
+			const node : XML = <{typeName} />;
+			
+			if(!(this is IHTMLNodeRestricted))
+				if(classes.length > 0) classes.write(node);
+				
+			return node;
 		}
 		
 		/**

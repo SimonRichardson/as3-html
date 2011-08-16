@@ -5,15 +5,14 @@ package org.osflash.html.element
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
-	public class HTMLNodeRestrictedContainer extends HTMLNodeContainer 
-															implements IHTMLNodeRestricted
+	public class HTMLNodeRestricted extends HTMLNode implements IHTMLNodeRestricted
 	{
 
-		public function HTMLNodeRestrictedContainer(type : HTMLNodeType)
+		public function HTMLNodeRestricted(type : HTMLNodeType)
 		{
 			super(type);
 		}
-		
+
 		/**
 		 * @inheritDoc
 		 */

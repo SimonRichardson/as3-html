@@ -25,19 +25,19 @@ package org.osflash.html.element
 		public static const A : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0007);
 		
 		public static const IMG : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0008);
+
+		public static const TITLE : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0009);
 		
 		private var _name : String;
 		
 		public function HTMLNodeType(type : int)
 		{
 			super(type);
-			
-			_name = typeAsString(this);
 		}
 		
-		public static function typeAsString(type : HTMLNodeType) : String
+		public static function typeAsString(nodeType : HTMLNodeType) : String
 		{
-			switch(type)
+			switch(nodeType)
 			{
 				case HEAD: return 'head';
 				case STYLE: return 'style';
@@ -47,12 +47,17 @@ package org.osflash.html.element
 				case SPAN: return 'span';
 				case A: return 'a';
 				case IMG: return 'img';
+				case TITLE: return 'title';
 				default:
 					throw new ArgumentError('Unknown HTMLNodeType');
 					break;
 			}
 		}
 		
-		public function get name() : String { return _name; }
+		public function get name() : String 
+		{ 
+			if(null == _name) _name = typeAsString(this);
+			return _name; 
+		}
 	}
 }

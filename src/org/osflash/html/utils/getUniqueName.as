@@ -1,14 +1,11 @@
 package org.osflash.html.utils
 {
+	import flash.utils.getTimer;
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
 	public function getUniqueName() : String
 	{
-		_identifier++;
-		
-		return 'HTMLNode' + _identifier; 
+		return 'HTMLNode' + getTimer(); 
 	}
 }
-
-private static var _identifier : int = 0; 
