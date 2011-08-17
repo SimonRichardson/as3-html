@@ -6,6 +6,6 @@ package org.osflash.html.utils
 	 */
 	public function getUniqueName() : String
 	{
-		return 'HTMLNode' + getTimer(); 
+		return 'HTMLNode' + (getTimer() * int(Math.random() * 10000)); 
 	}
 }
