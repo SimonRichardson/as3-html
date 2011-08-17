@@ -1,9 +1,9 @@
 package org.osflash.html
 {
-	import org.osflash.html.builders.elements.meta.HTMLMetaNameNode;
-	import org.osflash.html.builders.elements.meta.HTMLMetaWindowTargetNode;
+	import org.osflash.html.element.HTMLNodeType;
 	import org.osflash.css.CSSStyle;
 	import org.osflash.css.CSSStyles;
+	import org.osflash.dom.element.utils.describeDOM;
 	import org.osflash.html.builders.elements.HTMLBodyNode;
 	import org.osflash.html.builders.elements.HTMLCommentNode;
 	import org.osflash.html.builders.elements.HTMLDivNode;
@@ -16,7 +16,9 @@ package org.osflash.html
 	import org.osflash.html.builders.elements.meta.HTMLMetaContentTypeNode;
 	import org.osflash.html.builders.elements.meta.HTMLMetaDateNode;
 	import org.osflash.html.builders.elements.meta.HTMLMetaLocationNode;
+	import org.osflash.html.builders.elements.meta.HTMLMetaNameNode;
 	import org.osflash.html.builders.elements.meta.HTMLMetaRefreshNode;
+	import org.osflash.html.builders.elements.meta.HTMLMetaWindowTargetNode;
 	import org.osflash.html.builders.types.meta.HTMLMetaCacheContentType;
 	import org.osflash.html.builders.types.meta.HTMLMetaContentType;
 	import org.osflash.html.element.HTMLDocument;
@@ -79,8 +81,11 @@ package org.osflash.html
 			body.add(div);
 			dom.add(body);
 			
-			// info(describeDOM(html));
-			// info(html.select('//*.(@id=="div1")'));
+			info(describeDOM(dom));
+			
+			info(dom.getElementById('div1'));
+			info(dom.getElementsByTagName(HTMLNodeType.META.name));
+			
 			info(dom.write());
 		}
 	}

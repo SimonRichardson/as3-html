@@ -52,5 +52,13 @@ package org.osflash.html.element
 		public function get typeName() : String { return _type.name; }
 		
 		public function get classes() : CSSClasses { return _classes; }
+		
+		/**
+		 * @inheritDoc
+		 */	
+		override public function toString() : String
+		{
+			return '[HTMLNode (type=\'' + typeName + '\', name=\'' + name + '\']';
+		}
 	}
 }
