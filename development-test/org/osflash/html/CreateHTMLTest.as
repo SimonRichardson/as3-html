@@ -1,10 +1,7 @@
 package org.osflash.html
 {
-	import org.osflash.html.builders.types.meta.HTMLMetaCacheContentType;
-	import org.osflash.html.builders.elements.meta.HTMLMetaCacheContentNode;
-	import flash.display.Sprite;
-	import flash.display.StageAlign;
-	import flash.display.StageScaleMode;
+	import org.osflash.html.builders.elements.meta.HTMLMetaNameNode;
+	import org.osflash.html.builders.elements.meta.HTMLMetaWindowTargetNode;
 	import org.osflash.css.CSSStyle;
 	import org.osflash.css.CSSStyles;
 	import org.osflash.html.builders.elements.HTMLBodyNode;
@@ -15,10 +12,19 @@ package org.osflash.html
 	import org.osflash.html.builders.elements.HTMLLinkNode;
 	import org.osflash.html.builders.elements.HTMLStyleNode;
 	import org.osflash.html.builders.elements.HTMLTitleNode;
+	import org.osflash.html.builders.elements.meta.HTMLMetaCacheContentNode;
 	import org.osflash.html.builders.elements.meta.HTMLMetaContentTypeNode;
+	import org.osflash.html.builders.elements.meta.HTMLMetaDateNode;
+	import org.osflash.html.builders.elements.meta.HTMLMetaLocationNode;
+	import org.osflash.html.builders.elements.meta.HTMLMetaRefreshNode;
+	import org.osflash.html.builders.types.meta.HTMLMetaCacheContentType;
 	import org.osflash.html.builders.types.meta.HTMLMetaContentType;
 	import org.osflash.html.element.HTMLDocument;
 	import org.osflash.logger.logs.info;
+
+	import flash.display.Sprite;
+	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
 
 
 	
@@ -37,8 +43,15 @@ package org.osflash.html
 			
 			const head : HTMLHeadNode = new HTMLHeadNode();
 			head.add(new HTMLTitleNode('HTML Test'));
+			
 			head.add(new HTMLMetaCacheContentNode(HTMLMetaCacheContentType.NO_CACHE));
 			head.add(new HTMLMetaContentTypeNode(HTMLMetaContentType.TEXT_HTML_UTF_8));
+			head.add(new HTMLMetaDateNode(new Date()));
+			head.add(new HTMLMetaLocationNode('http://www.hello.com'));
+			head.add(new HTMLMetaRefreshNode(3000));
+			head.add(new HTMLMetaWindowTargetNode('_top'));
+			head.add(new HTMLMetaNameNode('keywords', 'some this goes here'));
+			
 			head.add(new HTMLLinkNode('http://www.hello.com/styles/global.css'));
 			
 			const css : CSSStyles = new CSSStyles(true);
