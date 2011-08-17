@@ -1,5 +1,6 @@
 package org.osflash.html
 {
+	import org.osflash.css.CSSStyle;
 	import org.osflash.css.CSSStyles;
 	import org.osflash.html.builders.elements.HTMLBodyNode;
 	import org.osflash.html.builders.elements.HTMLCommentNode;
@@ -32,7 +33,13 @@ package org.osflash.html
 			head.add(new HTMLTitleNode('HTML Test'));
 			
 			const css : CSSStyles = new CSSStyles(true);
-			css.addID('div1').setPadding(0, 0, 0, 0);
+			const style0 : CSSStyle = css.addID('div1');
+			style0.setPadding('10%', '20px');
+			style0.setMargin('20px', '10%');
+			
+			const style1 : CSSStyle = css.addElement('div');
+			style1.setPadding('10%', '20px');
+			style1.setMargin('20px', '10%');
 			
 			head.add(new HTMLStyleNode(css));
 			dom.add(head);

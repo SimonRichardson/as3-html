@@ -39,43 +39,29 @@ package org.osflash.css
 			_name = name;
 		}
 		
-		public function setPadding(	top : Number, 
-									right : Number, 
-									bottom : Number, 
-									left : Number
-									) : void
+		public function setPadding(...rest) : CSSStyle
 		{
-			padding.top = top;
-			padding.right = right;
-			padding.bottom = bottom;
-			padding.left = left;
+			padding.setValues.apply(null, rest);
+			return this;
 		}
 		
-		public function setMargin(	top : Number, 
-									right : Number, 
-									bottom : Number, 
-									left : Number
-									) : void
+		public function setMargin(...rest) : CSSStyle
 		{
-			margin.top = top;
-			margin.right = right;
-			margin.bottom = bottom;
-			margin.left = left;
+			margin.setValues.apply(null, rest);
+			return this;
 		}
 		
 		public function write() : String
 		{
 			const buffer : Vector.<String> = new Vector.<String>();
-			buffer.push(type.value);
-			buffer.push(name);
-			buffer.push(' { ');
+			buffer.push(type.value + name, '{');
 			
 			if(null != _padding) buffer.push(padding.write());
 			if(null != _margin) buffer.push(margin.write());
 			
-			buffer.push(' }');
+			buffer.push('}');
 			
-			return buffer.join('');
+			return buffer.join(' ');
 		}
 		
 		public function get type() : CSSStyleType { return _type; }

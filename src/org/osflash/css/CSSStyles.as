@@ -122,7 +122,7 @@ package org.osflash.css
 				buffer.push(style.write());
 			}
 			
-			return buffer.join('');
+			return buffer.join(' ');
 		}
 		
 		public function get strict() : Boolean { return _strict; }
