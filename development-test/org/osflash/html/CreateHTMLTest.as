@@ -26,7 +26,7 @@ package org.osflash.html
 			
 			XML.ignoreComments = false;
 			
-			const html : HTMLDocument = new HTMLDocument();
+			const dom : HTMLDocument = new HTMLDocument();
 			
 			const head : HTMLHeadNode = new HTMLHeadNode();
 			head.add(new HTMLTitleNode('HTML Test'));
@@ -35,9 +35,9 @@ package org.osflash.html
 			css.addID('div1').setPadding(0, 0, 0, 0);
 			
 			head.add(new HTMLStyleNode(css));
-			html.add(head);
+			dom.add(head);
 			
-			html.add(new HTMLCommentNode('This is a comment'));
+			dom.add(new HTMLCommentNode('This is a comment'));
 			
 			const body : HTMLBodyNode = new HTMLBodyNode();
 			const div : HTMLDivNode = new HTMLDivNode();
@@ -45,11 +45,11 @@ package org.osflash.html
 			div.classes.add('wrapper').add('slapper');
 			
 			body.add(div);
-			html.add(body);
+			dom.add(body);
 			
 			// info(describeDOM(html));
 			// info(html.select('//*.(@id=="div1")'));
-			info(html.write());
+			info(dom.write());
 		}
 	}
 }
