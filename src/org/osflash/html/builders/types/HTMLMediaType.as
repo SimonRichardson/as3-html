@@ -46,15 +46,16 @@ package org.osflash.html.builders.types
 		{
 			switch(type)
 			{
-				case SCREEN: return type.type;
-				case TTY: return type.type;
-				case TV: return type.type;
-				case PROJECTION: return type.type;
-				case HANDHELD: return type.type;
-				case PRINT: return type.type;
-				case BRAILLE: return type.type;
-				case AURAL: return type.type;
-				case ALL: return type.type;
+				case SCREEN:
+				case TTY:
+				case TV:
+				case PROJECTION:
+				case HANDHELD:
+				case PRINT:
+				case BRAILLE:
+				case AURAL:
+				case ALL: 
+					return type.type;
 				default: 
 					throw new ArgumentError('Unknown HTMLMediaType found');
 			}

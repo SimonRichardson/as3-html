@@ -5,7 +5,9 @@ package org.osflash.html
 	import org.osflash.html.builders.elements.HTMLBodyNode;
 	import org.osflash.html.builders.elements.HTMLCommentNode;
 	import org.osflash.html.builders.elements.HTMLDivNode;
+	import org.osflash.html.builders.elements.HTMLH1Node;
 	import org.osflash.html.builders.elements.HTMLHeadNode;
+	import org.osflash.html.builders.elements.HTMLLinkNode;
 	import org.osflash.html.builders.elements.HTMLStyleNode;
 	import org.osflash.html.builders.elements.HTMLTitleNode;
 	import org.osflash.html.element.HTMLDocument;
@@ -31,6 +33,7 @@ package org.osflash.html
 			
 			const head : HTMLHeadNode = new HTMLHeadNode();
 			head.add(new HTMLTitleNode('HTML Test'));
+			head.add(new HTMLLinkNode('http://www.hello.com/styles/global.css'));
 			
 			const css : CSSStyles = new CSSStyles(true);
 			const style0 : CSSStyle = css.addID('div1');
@@ -47,6 +50,9 @@ package org.osflash.html
 			dom.add(new HTMLCommentNode('This is a comment'));
 			
 			const body : HTMLBodyNode = new HTMLBodyNode();
+			const h1 : HTMLH1Node = new HTMLH1Node('HTML Test');
+			body.add(h1);
+			
 			const div : HTMLDivNode = new HTMLDivNode();
 			div.id = 'div1';
 			div.classes.add('wrapper').add('slapper');

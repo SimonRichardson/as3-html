@@ -5,5 +5,7 @@ package org.osflash.html.element
 	 */
 	public interface IHTMLNodeRestricted
 	{
+		
+		function get restricted() : Boolean;
 	}
 }

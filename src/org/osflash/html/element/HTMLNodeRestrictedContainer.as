@@ -21,5 +21,7 @@ package org.osflash.html.element
 		{
 			throw new HTMLError(typeName.toUpperCase() + ' is not allowed to have css classes');
 		}
+		
+		final public function get restricted() : Boolean { return true; }
 	}
 }
