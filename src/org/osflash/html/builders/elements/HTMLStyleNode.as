@@ -50,7 +50,7 @@ package org.osflash.html.builders.elements
 			_styles = styles;
 			
 			_mimeType = type || HTMLMIMEType.TEXT_CSS;
-			_mediaType = media || HTMLMediaType.SCREEN;
+			_mediaType = media;
 		}
 
 		/**
@@ -61,7 +61,8 @@ package org.osflash.html.builders.elements
 			const xml : XML = super.write();
 			
 			xml.@type = _mimeType.name;
-			xml.@media = _mediaType.name;
+			
+			if(null != _mediaType) xml.@media = _mediaType.name;
 			
 			if(styles.strict)
 			{
