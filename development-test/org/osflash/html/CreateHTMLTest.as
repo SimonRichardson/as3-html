@@ -1,5 +1,10 @@
 package org.osflash.html
 {
+	import org.osflash.html.builders.types.meta.HTMLMetaCacheContentType;
+	import org.osflash.html.builders.elements.meta.HTMLMetaCacheContentNode;
+	import flash.display.Sprite;
+	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
 	import org.osflash.css.CSSStyle;
 	import org.osflash.css.CSSStyles;
 	import org.osflash.html.builders.elements.HTMLBodyNode;
@@ -10,12 +15,11 @@ package org.osflash.html
 	import org.osflash.html.builders.elements.HTMLLinkNode;
 	import org.osflash.html.builders.elements.HTMLStyleNode;
 	import org.osflash.html.builders.elements.HTMLTitleNode;
+	import org.osflash.html.builders.elements.meta.HTMLMetaContentTypeNode;
+	import org.osflash.html.builders.types.meta.HTMLMetaContentType;
 	import org.osflash.html.element.HTMLDocument;
 	import org.osflash.logger.logs.info;
 
-	import flash.display.Sprite;
-	import flash.display.StageAlign;
-	import flash.display.StageScaleMode;
 
 	
 	[SWF(backgroundColor="#333333", frameRate="31", width="480", height="480")]
@@ -33,6 +37,8 @@ package org.osflash.html
 			
 			const head : HTMLHeadNode = new HTMLHeadNode();
 			head.add(new HTMLTitleNode('HTML Test'));
+			head.add(new HTMLMetaCacheContentNode(HTMLMetaCacheContentType.NO_CACHE));
+			head.add(new HTMLMetaContentTypeNode(HTMLMetaContentType.TEXT_HTML_UTF_8));
 			head.add(new HTMLLinkNode('http://www.hello.com/styles/global.css'));
 			
 			const css : CSSStyles = new CSSStyles(true);

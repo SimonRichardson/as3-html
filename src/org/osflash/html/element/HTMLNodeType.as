@@ -46,6 +46,8 @@ package org.osflash.html.element
 		
 		public static const LINK : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0018, 'link');
 		
+		public static const META : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0019, 'meta');
+		
 		/**
 		 * @private
 		 */
@@ -80,6 +82,7 @@ package org.osflash.html.element
 				case HR:
 				case IMG:
 				case LINK:
+				case META:
 				case P:
 				case SCRIPT:
 				case STYLE:
