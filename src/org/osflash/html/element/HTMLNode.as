@@ -36,6 +36,8 @@ package org.osflash.html.element
 		{
 			const node : XML = <{typeName} />;
 			
+			if(null != id && id.length > 0) node.@id = id;
+			
 			if(!(this is IHTMLNodeRestricted))
 				if(classes.length > 0) classes.write(node);
 				

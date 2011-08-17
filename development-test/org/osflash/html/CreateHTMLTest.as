@@ -1,6 +1,6 @@
 package org.osflash.html
 {
-	import org.osflash.css.CSSStyle;
+	import org.osflash.css.CSSStyles;
 	import org.osflash.html.builders.elements.HTMLBodyNode;
 	import org.osflash.html.builders.elements.HTMLCommentNode;
 	import org.osflash.html.builders.elements.HTMLDivNode;
@@ -30,13 +30,18 @@ package org.osflash.html
 			
 			const head : HTMLHeadNode = new HTMLHeadNode();
 			head.add(new HTMLTitleNode('HTML Test'));
-			head.add(new HTMLStyleNode(new CSSStyle()));
+			
+			const css : CSSStyles = new CSSStyles(true);
+			css.addID('div1').setPadding(0, 0, 0, 0);
+			
+			head.add(new HTMLStyleNode(css));
 			html.add(head);
 			
 			html.add(new HTMLCommentNode('This is a comment'));
 			
 			const body : HTMLBodyNode = new HTMLBodyNode();
 			const div : HTMLDivNode = new HTMLDivNode();
+			div.id = 'div1';
 			div.classes.add('wrapper').add('slapper');
 			
 			body.add(div);

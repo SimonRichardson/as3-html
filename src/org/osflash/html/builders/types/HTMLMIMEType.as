@@ -1,4 +1,4 @@
-package org.osflash.html.builders.utils
+package org.osflash.html.builders.types
 {
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
