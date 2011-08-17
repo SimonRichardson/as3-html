@@ -47,6 +47,8 @@ package org.osflash.html
 			body.add(div);
 			html.add(body);
 			
+			// info(describeDOM(html));
+			// info(html.select('//*.(@id=="div1")'));
 			info(html.write());
 		}
 	}
