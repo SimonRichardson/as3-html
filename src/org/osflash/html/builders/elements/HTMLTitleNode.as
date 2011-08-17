@@ -1,4 +1,4 @@
-package org.osflash.html.elements
+package org.osflash.html.builders.elements
 {
 	import org.osflash.html.element.HTMLNodeRestricted;
 	import org.osflash.html.element.HTMLNodeType;

@@ -1,16 +1,16 @@
-package org.osflash.html.elements
+package org.osflash.html.builders.elements
 {
 	import org.osflash.html.element.HTMLNode;
 	import org.osflash.html.element.HTMLNodeType;
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
-	public class HTMLBrNode extends HTMLNode
+	public class HTMLImageNode extends HTMLNode
 	{
 
-		public function HTMLBrNode()
+		public function HTMLImageNode()
 		{
-			super(HTMLNodeType.BR);
+			super(HTMLNodeType.IMG);
 		}
 	}
 }

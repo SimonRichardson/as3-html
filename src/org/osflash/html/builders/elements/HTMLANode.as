@@ -1,4 +1,4 @@
-package org.osflash.html.elements
+package org.osflash.html.builders.elements
 {
 	import org.osflash.html.element.HTMLNodeType;
 	import org.osflash.html.element.HTMLNodeContainer;
@@ -6,12 +6,12 @@ package org.osflash.html.elements
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
-	public class HTMLSpanNode extends HTMLNodeContainer
+	public class HTMLANode extends HTMLNodeContainer
 	{
 
-		public function HTMLSpanNode()
+		public function HTMLANode()
 		{
-			super(HTMLNodeType.SPAN);
+			super(HTMLNodeType.A);
 		}
 	}
 }

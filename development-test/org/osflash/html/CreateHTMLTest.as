@@ -1,16 +1,16 @@
 package org.osflash.html
 {
-	import org.osflash.html.element.HTMLDocument;
-	import org.osflash.html.elements.HTMLBodyNode;
-	import org.osflash.html.elements.HTMLDivNode;
-	import org.osflash.html.elements.HTMLHeadNode;
-	import org.osflash.html.elements.HTMLStyleNode;
-	import org.osflash.html.elements.HTMLTitleNode;
-	import org.osflash.logger.logs.info;
-
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
+	import org.osflash.html.builders.elements.HTMLBodyNode;
+	import org.osflash.html.builders.elements.HTMLDivNode;
+	import org.osflash.html.builders.elements.HTMLHeadNode;
+	import org.osflash.html.builders.elements.HTMLStyleNode;
+	import org.osflash.html.builders.elements.HTMLTitleNode;
+	import org.osflash.html.element.HTMLDocument;
+	import org.osflash.logger.logs.info;
+
 	
 	[SWF(backgroundColor="#333333", frameRate="31", width="480", height="480")]
 	public class CreateHTMLTest extends Sprite

@@ -1,16 +1,17 @@
-package org.osflash.html.elements
+package org.osflash.html.builders.elements
 {
 	import org.osflash.html.element.HTMLNodeRestrictedContainer;
 	import org.osflash.html.element.HTMLNodeType;
+
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
-	public class HTMLHeadNode extends HTMLNodeRestrictedContainer
+	public class HTMLScriptNode extends HTMLNodeRestrictedContainer
 	{
 
-		public function HTMLHeadNode()
+		public function HTMLScriptNode()
 		{
-			super(HTMLNodeType.HEAD);
+			super(HTMLNodeType.SCRIPT);
 		}
 	}
 }
