@@ -1,11 +1,13 @@
 package org.osflash.html.utils
 {
-	import flash.utils.getTimer;
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
 	public function getUniqueName() : String
 	{
-		return 'HTMLNode' + (getTimer() * int(Math.random() * 10000)); 
+		return 'HTMLNode' + uniqueNameCounter++; 
 	}
 }
+
+// This is a private value, that is actually global.
+var uniqueNameCounter : int = 0;
