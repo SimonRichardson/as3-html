@@ -1,4 +1,4 @@
-package org.osflash.html.builders.elements.head
+package org.osflash.html.builders.elements.common.style
 {
 	import org.osflash.css.CSSStyle;
 	import org.osflash.css.CSSStyles;

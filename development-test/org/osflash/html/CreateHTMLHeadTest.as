@@ -5,10 +5,11 @@ package org.osflash.html
 	import flash.display.StageScaleMode;
 	import org.osflash.css.CSSStyle;
 	import org.osflash.css.CSSStyles;
+	import org.osflash.html.builders.elements.common.script.HTMLScriptFileNode;
+	import org.osflash.html.builders.elements.common.style.HTMLStyleNode;
 	import org.osflash.html.builders.elements.head.HTMLBaseNode;
 	import org.osflash.html.builders.elements.head.HTMLHeadNode;
 	import org.osflash.html.builders.elements.head.HTMLLinkNode;
-	import org.osflash.html.builders.elements.head.HTMLStyleNode;
 	import org.osflash.html.builders.elements.head.HTMLTitleNode;
 	import org.osflash.html.builders.elements.head.meta.HTMLMetaCacheContentNode;
 	import org.osflash.html.builders.elements.head.meta.HTMLMetaContentTypeNode;
@@ -17,7 +18,6 @@ package org.osflash.html
 	import org.osflash.html.builders.elements.head.meta.HTMLMetaNameNode;
 	import org.osflash.html.builders.elements.head.meta.HTMLMetaRefreshNode;
 	import org.osflash.html.builders.elements.head.meta.HTMLMetaWindowTargetNode;
-	import org.osflash.html.builders.elements.script.HTMLScriptFileNode;
 	import org.osflash.html.builders.types.meta.HTMLMetaCacheContentType;
 	import org.osflash.html.builders.types.meta.HTMLMetaContentType;
 	import org.osflash.html.element.HTMLDocument;

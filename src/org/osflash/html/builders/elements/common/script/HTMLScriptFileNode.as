@@ -1,4 +1,4 @@
-package org.osflash.html.builders.elements.script
+package org.osflash.html.builders.elements.common.script
 {
 	import org.osflash.html.builders.types.HTMLCharsetType;
 	import org.osflash.html.builders.types.HTMLMIMEType;
