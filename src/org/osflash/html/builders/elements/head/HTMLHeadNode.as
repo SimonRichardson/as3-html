@@ -83,6 +83,9 @@ package org.osflash.html.builders.elements.head
 		 */
 		private function mergeTags(type : HTMLNodeType) : void
 		{
+			// TODO: workout if an item is inside a IE comment node. If so prevent the merge
+			// from happening, stating that there are rules which prevent this.
+			
 			const query : String = path + '/*.(@typeName=="' + type.name + '")';
 			const nodes : Vector.<IDOMNode> = document.select(query);
 			const total : int = nodes.length;
@@ -91,7 +94,6 @@ package org.osflash.html.builders.elements.head
 				const stack : Dictionary = new Dictionary();
 				
 				var hash : String;
-				
 				// Validate them and make sure that the types have the right metadata
 				for(var i : int = 0; i<total; i++)
 				{
