@@ -1,4 +1,4 @@
-package org.osflash.html.builders.elements.common
+package org.osflash.html.builders.elements.common.comments
 {
 	import org.osflash.html.element.HTMLNodeType;
 	import org.osflash.html.element.HTMLNodeRestricted;

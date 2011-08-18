@@ -8,7 +8,7 @@ package org.osflash.html.builders.elements.body
 	 */
 	public class HTMLDivNode extends HTMLNodeContainer
 	{
-
+		
 		public function HTMLDivNode()
 		{
 			super(HTMLNodeType.DIV);

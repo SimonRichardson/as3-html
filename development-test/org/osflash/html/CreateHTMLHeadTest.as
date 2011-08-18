@@ -1,9 +1,12 @@
 package org.osflash.html
 {
+	import flash.display.Sprite;
+	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
 	import org.osflash.css.CSSStyle;
 	import org.osflash.css.CSSStyles;
 	import org.osflash.dom.element.utils.describeDOM;
-	import org.osflash.html.builders.elements.common.HTMLCommentNode;
+	import org.osflash.html.builders.elements.common.comments.HTMLCommentNode;
 	import org.osflash.html.builders.elements.common.script.HTMLScriptFileNode;
 	import org.osflash.html.builders.elements.common.script.HTMLScriptNode;
 	import org.osflash.html.builders.elements.common.style.HTMLStyleNode;
@@ -23,9 +26,6 @@ package org.osflash.html
 	import org.osflash.html.element.HTMLDocument;
 	import org.osflash.logger.logs.info;
 
-	import flash.display.Sprite;
-	import flash.display.StageAlign;
-	import flash.display.StageScaleMode;
 
 
 	[SWF(backgroundColor="#333333", frameRate="31", width="480", height="480")]

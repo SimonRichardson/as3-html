@@ -54,7 +54,13 @@ package org.osflash.html.element
 		
 		public static const BASE : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0022, 'base');
 		
-		public static const NOSCRIPT : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0023, 'noscript');
+		public static const NOSCRIPT : HTMLNodeType = 
+												new HTMLNodeType(HTML_NODE | 0x0023, 'noscript');
+		
+		public static const CONDITIONAL : HTMLNodeType = 
+												new HTMLNodeType(HTML_NODE | 0x0024, '<!--[]-->');
+		
+		public static const RAW_TEXT : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0025, 'RAW');
 		
 		/**
 		 * @private
@@ -82,6 +88,7 @@ package org.osflash.html.element
 				case BODY:
 				case BR:
 				case COMMENT:
+				case CONDITIONAL:
 				case DIV:
 				case H1: 
 				case H2:
@@ -96,6 +103,7 @@ package org.osflash.html.element
 				case META:
 				case NOSCRIPT:
 				case P:
+				case RAW_TEXT:
 				case SCRIPT:
 				case STYLE:
 				case SPAN:
