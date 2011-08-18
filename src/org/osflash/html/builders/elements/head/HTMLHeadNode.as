@@ -21,24 +21,30 @@ package org.osflash.html.builders.elements.head
 		 */
 		override public function addAt(node : IDOMNode, index : int) : IDOMNode
 		{
+			var htmlNode : HTMLNode;
+			if(node is HTMLNode)
+				htmlNode = HTMLNode(node);
+			else throw new HTMLError('You can not add a none HTMLNode to HTMLNode');
+			
 			switch(node.type.type)
 			{
-				case HTMLNodeType.TITLE.type:
 				case HTMLNodeType.BASE.type:
+				case HTMLNodeType.COMMENT.type:
 				case HTMLNodeType.LINK.type:
 				case HTMLNodeType.META.type:
 				case HTMLNodeType.SCRIPT.type:
 				case HTMLNodeType.STYLE.type:
 					return super.addAt(node, index);
+				case HTMLNodeType.TITLE.type:
+					if(containsType(node.type)) 
+						throw new HTMLError('You can not add ' + htmlNode.typeName + ' again');
+					else return super.addAt(node, index);
 				default:
-					if(node is HTMLNode)
-					{
-						const htmlNode : HTMLNode = HTMLNode(node);
-						throw new HTMLError('You can not add ' + htmlNode.typeName + 
-																				' to ' + typeName);
-					}
-					else throw new HTMLError('You can not add a none HTMLNode to HTMLNode');
+					throw new HTMLError('You can not add ' + htmlNode.typeName + ' to ' + typeName);
+					
 			}
+			
+			return null;
 		}
 	}
 }

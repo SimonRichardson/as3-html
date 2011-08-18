@@ -1,8 +1,6 @@
 package org.osflash.html
 {
-	import flash.display.Sprite;
-	import flash.display.StageAlign;
-	import flash.display.StageScaleMode;
+	import org.osflash.dom.element.utils.describeDOM;
 	import org.osflash.html.builders.elements.body.HTMLBodyNode;
 	import org.osflash.html.builders.elements.body.header.HTMLH1Node;
 	import org.osflash.html.builders.elements.body.header.HTMLH2Node;
@@ -14,6 +12,10 @@ package org.osflash.html
 	import org.osflash.html.builders.elements.head.HTMLTitleNode;
 	import org.osflash.html.element.HTMLDocument;
 	import org.osflash.logger.logs.info;
+
+	import flash.display.Sprite;
+	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
 
 	[SWF(backgroundColor="#333333", frameRate="31", width="480", height="480")]
 	public class CreateHTMLHeaderTest extends Sprite
@@ -43,6 +45,7 @@ package org.osflash.html
 			
 			dom.add(body);
 			
+			info(describeDOM(dom));
 			info(dom.write());
 		}
 	}

@@ -1,5 +1,7 @@
 package org.osflash.html
 {
+	import org.osflash.dom.element.utils.describeDOM;
+	import org.osflash.html.builders.elements.common.HTMLCommentNode;
 	import org.osflash.html.builders.elements.common.script.HTMLScriptNode;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
@@ -53,7 +55,9 @@ package org.osflash.html
 			head.add(new HTMLBaseNode(null, '_blank'));
 
 			head.add(new HTMLLinkNode('http://www.hello.com/styles/global.css'));
-
+			
+			head.add(new HTMLCommentNode('Style starts here'));
+			
 			const css : CSSStyles = new CSSStyles();
 			const style0 : CSSStyle = css.addID('div1');
 			style0.setPadding('10%', '20px');
@@ -64,12 +68,14 @@ package org.osflash.html
 			style1.setMargin('20px', '10%');
 
 			head.add(new HTMLStyleNode(css));
+			head.add(new HTMLCommentNode('Style finishes here'));
 			
 			head.add(new HTMLScriptFileNode('http://www.hello.com/script/global.js'));
 			head.add(new HTMLScriptNode('alert(\'Hello World\');'));
 			
 			dom.add(head);
-
+			
+			info(describeDOM(dom));
 			info(dom.write());
 		}
 	}
