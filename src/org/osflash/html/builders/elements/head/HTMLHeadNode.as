@@ -55,7 +55,6 @@ package org.osflash.html.builders.elements.head
 					else return super.addAt(node, index);
 				default:
 					throw new HTMLError('You can not add ' + htmlNode.typeName + ' to ' + typeName);
-					
 			}
 			
 			return null;
