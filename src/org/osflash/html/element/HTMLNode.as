@@ -26,6 +26,16 @@ package org.osflash.html.element
 		/**
 		 * @private
 		 */
+		private var _accessKey : String;
+		
+		/**
+		 * @private
+		 */
+		private var _tabIndex : int;
+		
+		/**
+		 * @private
+		 */
 		private var _classes : CSSClasses;
 		
 		public function HTMLNode(type : HTMLNodeType)
@@ -35,6 +45,7 @@ package org.osflash.html.element
 			if(null == type) throw new ArgumentError('type can not be null');
 			
 			_type = type;
+			_tabIndex = -1;
 			
 			_classes = new CSSClasses();
 		}
@@ -60,6 +71,10 @@ package org.osflash.html.element
 			if(null != id && id.length > 0) node.@id = id;
 			if(null != title && title.length > 0) node.@title = title;
 			
+			if(null != accessKey && accessKey.length > 0) node.@accesskey = accessKey;
+			if(tabIndex >= 0) node.@tabindex = tabIndex;
+			
+			
 			if(!(this is IHTMLNodeRestricted))
 			{
 				if(classes.length > 0) classes.write(node);
@@ -79,6 +94,12 @@ package org.osflash.html.element
 		
 		public function get title() : String { return _title; }
 		public function set title(value : String) : void { _title = value; }
+		
+		public function get accessKey() : String { return _accessKey; }
+		public function set accessKey(value : String) : void { _accessKey = value; }
+		
+		public function get tabIndex() : int { return _tabIndex; }
+		public function set tabIndex(value : int) : void { _tabIndex = value; }
 		
 		/**
 		 * @inheritDoc

@@ -30,7 +30,6 @@ package org.osflash.html
 			dom.add(head);
 
 			const body : HTMLBodyNode = new HTMLBodyNode();
-
 			dom.add(body);
 
 			info(describeDOM(dom));
