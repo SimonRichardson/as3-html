@@ -1,8 +1,5 @@
 package org.osflash.html
 {
-	import flash.display.Sprite;
-	import flash.display.StageAlign;
-	import flash.display.StageScaleMode;
 	import org.osflash.css.CSSStyle;
 	import org.osflash.css.CSSStyles;
 	import org.osflash.dom.element.utils.describeDOM;
@@ -26,7 +23,9 @@ package org.osflash.html
 	import org.osflash.html.element.HTMLDocument;
 	import org.osflash.logger.logs.info;
 
-
+	import flash.display.Sprite;
+	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
 
 	[SWF(backgroundColor="#333333", frameRate="31", width="480", height="480")]
 	public class CreateHTMLHeadTest extends Sprite
@@ -56,14 +55,14 @@ package org.osflash.html
 			head.add(new HTMLBaseNode(null, '_blank'));
 
 			head.add(new HTMLLinkNode('http://www.hello.com/styles/global.css'));
-			
+
 			head.add(new HTMLCommentNode('Style starts here'));
-			
+
 			const css0 : CSSStyles = new CSSStyles();
 			const style0 : CSSStyle = css0.addID('div1');
 			style0.setPadding('10%', '20px');
 			style0.setMargin('20px', '10%');
-			
+
 			const css1 : CSSStyles = new CSSStyles();
 			const style1 : CSSStyle = css1.addElement('div');
 			style1.setPadding('10%', '20px');
@@ -72,13 +71,13 @@ package org.osflash.html
 			head.add(new HTMLStyleNode(css0));
 			head.add(new HTMLStyleNode(css1));
 			head.add(new HTMLCommentNode('Style finishes here'));
-			
+
 			head.add(new HTMLScriptFileNode('http://www.hello.com/script/global.js'));
 			head.add(new HTMLScriptNode('alert(\'Hello World 0\');'));
 			head.add(new HTMLScriptNode('alert(\'Hello World 1\');'));
-			
+
 			dom.add(head);
-			
+
 			info(describeDOM(dom));
 			info(dom.write());
 		}

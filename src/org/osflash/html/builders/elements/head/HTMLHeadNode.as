@@ -44,6 +44,7 @@ package org.osflash.html.builders.elements.head
 			{
 				case HTMLNodeType.BASE.type:
 				case HTMLNodeType.COMMENT.type:
+				case HTMLNodeType.CONDITIONAL.type:
 				case HTMLNodeType.LINK.type:
 				case HTMLNodeType.META.type:
 				case HTMLNodeType.SCRIPT.type:
@@ -89,15 +90,23 @@ package org.osflash.html.builders.elements.head
 			mergeTags(HTMLNodeType.SCRIPT);
 		}
 		
+		public function hasConditionalStatements() : Boolean
+		{
+			const typeName : String = HTMLNodeType.CONDITIONAL.name;
+			const query : String = path.toQuery() + '/*.(@typeName=="' + typeName + '")';
+			const nodes : Vector.<IDOMNode> = document.select(query);
+			return (null != nodes && nodes.length > 0);
+		}
+		
 		/**
 		 * @private
 		 * @param type HTMLNodeType of node to merge
 		 */
 		private function mergeTags(type : HTMLNodeType) : void
 		{
-			// TODO: workout if an item is inside a IE comment node. If so prevent the merge
-			// from happening, stating that there are rules which prevent this.
-			
+			if(hasConditionalStatements())
+				throw new HTMLError('Unable to merge tags, there are conditional statements.');
+						
 			const query : String = path.toQuery() + '/*.(@typeName=="' + type.name + '")';
 			const nodes : Vector.<IDOMNode> = document.select(query);
 			const total : int = nodes.length;
