@@ -62,6 +62,8 @@ package org.osflash.html.element
 		
 		public static const RAW_TEXT : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0025, 'RAW');
 		
+		public static const CDATA : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0026, 'CDATA');
+		
 		/**
 		 * @private
 		 */
@@ -87,6 +89,7 @@ package org.osflash.html.element
 				case BASE:
 				case BODY:
 				case BR:
+				case CDATA:
 				case COMMENT:
 				case CONDITIONAL:
 				case DIV:
