@@ -3,14 +3,12 @@ package org.osflash.html.builders.types
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class HTMLMIMEType
+	public class HTMLCharsetType
 	{
 		
-		public static const TEXT_HTML : HTMLMIMEType = new HTMLMIMEType('text/html');
+		public static const UTF_8 : HTMLCharsetType = new HTMLCharsetType('UTF-8');
 		
-		public static const TEXT_CSS : HTMLMIMEType = new HTMLMIMEType('text/css');
-		
-		public static const TEXT_JAVASCRIPT : HTMLMIMEType = new HTMLMIMEType('text/javascript');
+		public static const ISO_8859_1 : HTMLCharsetType = new HTMLCharsetType('ISO-8859-1');
 		
 		/**
 		 * @private
@@ -22,7 +20,7 @@ package org.osflash.html.builders.types
 		 */
 		private var _name : String;
 
-		public function HTMLMIMEType(type : String)
+		public function HTMLCharsetType(type : String)
 		{
 			if(null == type) throw new ArgumentError('Type can not be null');
 			if(type.length == 0) throw new ArgumentError('Type can not be empty');
@@ -30,16 +28,15 @@ package org.osflash.html.builders.types
 			_type = type;
 		}
 		
-		public static function typeAsString(type : HTMLMIMEType) : String
+		public static function typeAsString(type : HTMLCharsetType) : String
 		{
 			switch(type)
 			{
-				case TEXT_HTML:
-				case TEXT_CSS:
-				case TEXT_JAVASCRIPT: 
+				case UTF_8:
+				case ISO_8859_1:
 					return type.type;
 				default: 
-					throw new ArgumentError('Unknown HTMLMIMEType found');
+					throw new ArgumentError('Unknown HTMLCharsetType found');
 			}
 		}
 		

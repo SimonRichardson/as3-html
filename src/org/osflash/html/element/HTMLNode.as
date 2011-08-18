@@ -1,5 +1,7 @@
 package org.osflash.html.element
 {
+	import org.osflash.html.errors.HTMLError;
+	import org.osflash.dom.element.IDOMNode;
 	import org.osflash.css.classes.CSSClasses;
 	import org.osflash.dom.element.DOMNode;
 	import org.osflash.dom.element.IDOMElementType;
@@ -30,6 +32,20 @@ package org.osflash.html.element
 			_type = type;
 			
 			_classes = new CSSClasses();
+		}
+		
+		/**
+		 * @inheritDoc
+		 */	
+		override public function addAt(node : IDOMNode, index : int) : IDOMNode
+		{
+			if(!(node is HTMLNode)) 
+			{
+				throw new HTMLError('IllegalOperationError: You can not add ' + 
+												' a none HTMLNode to a HTMLNode');
+			}
+			
+			return super.addAt(node, index);
 		}
 		
 		public function write() : XML

@@ -42,11 +42,17 @@ package org.osflash.html.element
 		
 		public static const H4 : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0016, 'h4');
 		
-		public static const HR : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0017, 'hr');
+		public static const H5 : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0017, 'h5');
 		
-		public static const LINK : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0018, 'link');
+		public static const H6 : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0018, 'h6');
 		
-		public static const META : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0019, 'meta');
+		public static const HR : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0019, 'hr');
+		
+		public static const LINK : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0020, 'link');
+		
+		public static const META : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0021, 'meta');
+		
+		public static const BASE : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0022, 'base');
 		
 		/**
 		 * @private
@@ -70,6 +76,7 @@ package org.osflash.html.element
 			switch(nodeType)
 			{
 				case A:
+				case BASE:
 				case BODY:
 				case BR:
 				case COMMENT:
@@ -78,6 +85,8 @@ package org.osflash.html.element
 				case H2:
 				case H3:
 				case H4:
+				case H5:
+				case H6:
 				case HEAD:
 				case HR:
 				case IMG:
