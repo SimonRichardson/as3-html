@@ -11,13 +11,13 @@ package org.osflash.html.builders.elements.head
 		/**
 		 * @private
 		 */
-		private var _title : String;
+		private var _content : String;
 
-		public function HTMLTitleNode(title : String = '')
+		public function HTMLTitleNode(content : String = '')
 		{
 			super(HTMLNodeType.TITLE);
 			
-			_title = title;
+			_content = content;
 		}
 		
 		/**
@@ -26,12 +26,11 @@ package org.osflash.html.builders.elements.head
 		override public function write() : XML
 		{
 			const node : XML = super.write();
-			node.appendChild(title);
-			
+			node.appendChild(content);
 			return node;
 		}
 		
-		public function get title() : String { return _title; }
-		public function set title(value : String) : void { _title = value; }
+		public function get content() : String { return _content; }
+		public function set content(value : String) : void { _content = value; }
 	}
 }

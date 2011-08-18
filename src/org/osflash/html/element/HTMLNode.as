@@ -21,6 +21,11 @@ package org.osflash.html.element
 		/**
 		 * @private
 		 */
+		private var _title : String;
+		
+		/**
+		 * @private
+		 */
 		private var _classes : CSSClasses;
 		
 		public function HTMLNode(type : HTMLNodeType)
@@ -53,9 +58,12 @@ package org.osflash.html.element
 			const node : XML = <{typeName} />;
 			
 			if(null != id && id.length > 0) node.@id = id;
+			if(null != title && title.length > 0) node.@title = title;
 			
 			if(!(this is IHTMLNodeRestricted))
+			{
 				if(classes.length > 0) classes.write(node);
+			}
 				
 			return node;
 		}
@@ -68,6 +76,9 @@ package org.osflash.html.element
 		public function get typeName() : String { return _type.name; }
 		
 		public function get classes() : CSSClasses { return _classes; }
+		
+		public function get title() : String { return _title; }
+		public function set title(value : String) : void { _title = value; }
 		
 		/**
 		 * @inheritDoc
