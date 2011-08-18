@@ -1,15 +1,11 @@
 package org.osflash.html
 {
-	import org.osflash.html.builders.types.HTMLMediaType;
-	import org.osflash.dom.element.utils.describeDOM;
-	import org.osflash.html.builders.elements.common.HTMLCommentNode;
-	import org.osflash.html.builders.elements.common.script.HTMLScriptNode;
-	import flash.display.Sprite;
-	import flash.display.StageAlign;
-	import flash.display.StageScaleMode;
 	import org.osflash.css.CSSStyle;
 	import org.osflash.css.CSSStyles;
+	import org.osflash.dom.element.utils.describeDOM;
+	import org.osflash.html.builders.elements.common.HTMLCommentNode;
 	import org.osflash.html.builders.elements.common.script.HTMLScriptFileNode;
+	import org.osflash.html.builders.elements.common.script.HTMLScriptNode;
 	import org.osflash.html.builders.elements.common.style.HTMLStyleNode;
 	import org.osflash.html.builders.elements.head.HTMLBaseNode;
 	import org.osflash.html.builders.elements.head.HTMLHeadNode;
@@ -26,6 +22,10 @@ package org.osflash.html
 	import org.osflash.html.builders.types.meta.HTMLMetaContentType;
 	import org.osflash.html.element.HTMLDocument;
 	import org.osflash.logger.logs.info;
+
+	import flash.display.Sprite;
+	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
 
 
 	[SWF(backgroundColor="#333333", frameRate="31", width="480", height="480")]
@@ -69,8 +69,8 @@ package org.osflash.html
 			style1.setPadding('10%', '20px');
 			style1.setMargin('20px', '10%');
 
-			head.add(new HTMLStyleNode(css0, null, HTMLMediaType.SCREEN));
-			head.add(new HTMLStyleNode(css1, null, HTMLMediaType.SCREEN));
+			head.add(new HTMLStyleNode(css0));
+			head.add(new HTMLStyleNode(css1));
 			head.add(new HTMLCommentNode('Style finishes here'));
 			
 			head.add(new HTMLScriptFileNode('http://www.hello.com/script/global.js'));
