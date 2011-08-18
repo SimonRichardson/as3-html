@@ -39,8 +39,8 @@ package org.osflash.html.builders.elements.common.style
 		private var _mediaType : HTMLMediaType;
 		
 		public function HTMLStyleNode(	styles : CSSStyles, 
-										type : HTMLMIMEType = null, 
-										media : HTMLMediaType = null
+										mimeType : HTMLMIMEType = null, 
+										mediaType : HTMLMediaType = null
 										)
 		{
 			super(HTMLNodeType.STYLE);
@@ -49,8 +49,8 @@ package org.osflash.html.builders.elements.common.style
 			
 			_styles = styles;
 			
-			_mimeType = type || HTMLMIMEType.TEXT_CSS;
-			_mediaType = media;
+			_mimeType = mimeType || HTMLMIMEType.TEXT_CSS;
+			_mediaType = mediaType;
 		}
 
 		/**
@@ -133,7 +133,9 @@ package org.osflash.html.builders.elements.common.style
 		public function get styles() : CSSStyles { return _styles; }
 		
 		public function get mimeType() : HTMLMIMEType { return _mimeType; }
+		public function set mimeType(value : HTMLMIMEType) : void { _mimeType = value; }
 		
-		public function get mediaType() : HTMLMediaType { return _mediaType; } 
+		public function get mediaType() : HTMLMediaType { return _mediaType; }
+		public function set mediaType(value : HTMLMediaType) : void { _mediaType = value; }
 	}
 }

@@ -77,6 +77,20 @@ package org.osflash.css
 			return result[0];
 		}
 		
+		public function concat(value : CSSStyles) : void
+		{
+			use namespace css_namespace;
+			
+			const total : int = value.styles.length;
+			for(var i : int = 0; i < total; i++)
+			{
+				const style : CSSStyle = value.styles[i];
+				
+				if(!contains(style.type, style.name)) styles.push(style);
+				else throw new CSSError('Style already exists');
+			}
+		}
+		
 		public function contains(type : CSSStyleType, name : String) : Boolean
 		{
 			var index : int = _styles.length;
@@ -108,7 +122,7 @@ package org.osflash.css
 			
 			return _styles[index];
 		}
-		
+				
 		public function write() : String
 		{
 			const total : int = _styles.length;

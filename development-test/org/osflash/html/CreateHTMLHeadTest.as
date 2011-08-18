@@ -1,5 +1,6 @@
 package org.osflash.html
 {
+	import org.osflash.html.builders.types.HTMLMediaType;
 	import org.osflash.dom.element.utils.describeDOM;
 	import org.osflash.html.builders.elements.common.HTMLCommentNode;
 	import org.osflash.html.builders.elements.common.script.HTMLScriptNode;
@@ -58,20 +59,23 @@ package org.osflash.html
 			
 			head.add(new HTMLCommentNode('Style starts here'));
 			
-			const css : CSSStyles = new CSSStyles();
-			const style0 : CSSStyle = css.addID('div1');
+			const css0 : CSSStyles = new CSSStyles();
+			const style0 : CSSStyle = css0.addID('div1');
 			style0.setPadding('10%', '20px');
 			style0.setMargin('20px', '10%');
-
-			const style1 : CSSStyle = css.addElement('div');
+			
+			const css1 : CSSStyles = new CSSStyles();
+			const style1 : CSSStyle = css1.addElement('div');
 			style1.setPadding('10%', '20px');
 			style1.setMargin('20px', '10%');
 
-			head.add(new HTMLStyleNode(css));
+			head.add(new HTMLStyleNode(css0, null, HTMLMediaType.SCREEN));
+			head.add(new HTMLStyleNode(css1, null, HTMLMediaType.SCREEN));
 			head.add(new HTMLCommentNode('Style finishes here'));
 			
 			head.add(new HTMLScriptFileNode('http://www.hello.com/script/global.js'));
-			head.add(new HTMLScriptNode('alert(\'Hello World\');'));
+			head.add(new HTMLScriptNode('alert(\'Hello World 0\');'));
+			head.add(new HTMLScriptNode('alert(\'Hello World 1\');'));
 			
 			dom.add(head);
 			
