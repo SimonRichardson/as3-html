@@ -17,10 +17,17 @@ package org.osflash.html.builders.elements.head
 	 */
 	public class HTMLHeadNode extends HTMLNodeRestrictedContainer
 	{
-
-		public function HTMLHeadNode()
+		
+		/**
+		 * @private
+		 */
+		private var _autoMerge : Boolean;
+		
+		public function HTMLHeadNode(autoMerge : Boolean = false)
 		{
 			super(HTMLNodeType.HEAD);
+			
+			_autoMerge = autoMerge;
 		}
 		
 		/**
@@ -59,7 +66,13 @@ package org.osflash.html.builders.elements.head
 		 */	
 		override public function write() : XML
 		{
-			return super.write();
+			if(autoMerge) 
+			{
+				// TODO : Make this non-destructive!
+				merge();
+				return super.write();
+			}
+			else return super.write();
 		}
 		
 		/**
@@ -86,7 +99,7 @@ package org.osflash.html.builders.elements.head
 			// TODO: workout if an item is inside a IE comment node. If so prevent the merge
 			// from happening, stating that there are rules which prevent this.
 			
-			const query : String = path + '/*.(@typeName=="' + type.name + '")';
+			const query : String = path.toQuery() + '/*.(@typeName=="' + type.name + '")';
 			const nodes : Vector.<IDOMNode> = document.select(query);
 			const total : int = nodes.length;
 			if(total > 1)
@@ -249,5 +262,8 @@ package org.osflash.html.builders.elements.head
 				}
 			}
 		}
+		
+		public function get autoMerge() : Boolean { return _autoMerge; }
+		public function set autoMerge(value : Boolean) : void { _autoMerge = value; }
 	}
 }
