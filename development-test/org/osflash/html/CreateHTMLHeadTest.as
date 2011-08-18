@@ -1,5 +1,6 @@
 package org.osflash.html
 {
+	import org.osflash.html.builders.elements.common.script.HTMLScriptNode;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
@@ -65,6 +66,7 @@ package org.osflash.html
 			head.add(new HTMLStyleNode(css));
 			
 			head.add(new HTMLScriptFileNode('http://www.hello.com/script/global.js'));
+			head.add(new HTMLScriptNode('alert(\'Hello World\');'));
 			
 			dom.add(head);
 

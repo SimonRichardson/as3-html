@@ -54,6 +54,8 @@ package org.osflash.html.element
 		
 		public static const BASE : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0022, 'base');
 		
+		public static const NOSCRIPT : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0023, 'noscript');
+		
 		/**
 		 * @private
 		 */
@@ -92,6 +94,7 @@ package org.osflash.html.element
 				case IMG:
 				case LINK:
 				case META:
+				case NOSCRIPT:
 				case P:
 				case SCRIPT:
 				case STYLE:
