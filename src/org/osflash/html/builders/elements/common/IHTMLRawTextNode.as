@@ -7,6 +7,7 @@ package org.osflash.html.builders.elements.common
 	public interface IHTMLRawTextNode extends IHTMLNode
 	{
 		
-		
+		function get text() : String;
+		function set text(value : String) : void;
 	}
 }

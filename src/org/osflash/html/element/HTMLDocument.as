@@ -33,6 +33,30 @@ package org.osflash.html.element
 			else return new Vector.<HTMLNode>();
 		}
 		
+		/**
+		 * @inheritDoc
+		 */	
+		override public function addAt(node : IDOMNode, index : int) : IDOMNode
+		{
+			var htmlNode : HTMLNode;
+			if(node is HTMLNode)
+				htmlNode = HTMLNode(node);
+			else throw new HTMLError('You can not add a none HTMLNode to HTMLNode');
+			
+			switch(node.type.type)
+			{
+				case HTMLNodeType.HEAD.type:
+				case HTMLNodeType.BODY.type:
+					if(containsType(node.type)) 
+						throw new HTMLError('You can not add ' + htmlNode.typeName + ' again');
+					else return super.addAt(node, index);
+				default:
+					return super.addAt(node, index);
+			}
+			
+			return null;
+		}
+		
 		public function read(xml : XML) : void
 		{
 			

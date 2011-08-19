@@ -74,7 +74,6 @@ package org.osflash.html.element
 			if(null != accessKey && accessKey.length > 0) node.@accesskey = accessKey;
 			if(tabIndex >= 0) node.@tabindex = tabIndex;
 			
-			
 			if(!(this is IHTMLNodeRestricted))
 			{
 				if(classes.length > 0) classes.write(node);

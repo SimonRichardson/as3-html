@@ -1,12 +1,14 @@
 package org.osflash.html.builders.elements.head
 {
-	import org.osflash.html.builders.elements.common.HTMLRawTextNode;
 	import org.osflash.css.CSSStyles;
 	import org.osflash.css.errors.CSSError;
+	import org.osflash.dom.dom_namespace;
 	import org.osflash.dom.element.IDOMNode;
+	import org.osflash.html.builders.elements.common.HTMLRawTextNode;
 	import org.osflash.html.builders.elements.common.script.HTMLScriptFileNode;
 	import org.osflash.html.builders.elements.common.script.HTMLScriptNode;
 	import org.osflash.html.builders.elements.common.style.HTMLStyleNode;
+	import org.osflash.html.element.HTMLDocument;
 	import org.osflash.html.element.HTMLNode;
 	import org.osflash.html.element.HTMLNodeRestrictedContainer;
 	import org.osflash.html.element.HTMLNodeType;
@@ -69,9 +71,49 @@ package org.osflash.html.builders.elements.head
 		{
 			if(autoMerge) 
 			{
-				// TODO : Make this non-destructive!
-				merge();
-				return super.write();
+				if(null == document) throw new HTMLError('No document found.');
+				if(document is HTMLDocument)
+				{
+					use namespace dom_namespace;
+					
+					const htmlDocument : HTMLDocument = HTMLDocument(document);
+					const elements : Vector.<IDOMNode> = htmlDocument.children;
+					const total : int = elements.length;
+					for(var i : int = 0; i < total; i++)
+					{
+						const node : IDOMNode = elements[i];
+						if(node is HTMLNode)
+						{
+							if(node is HTMLHeadNode)
+							{
+								const head : HTMLHeadNode = HTMLHeadNode(node);
+								const headChildren : Vector.<IDOMNode> = head.children.slice();
+								
+								merge(head);
+								
+								head.autoMerge = false;
+								const output : XML = head.write();
+								
+								head.removeAll();
+								
+								const numChildren : int = headChildren.length;
+								for(var j : int = 0; j < numChildren; j++)
+								{
+									const headChild : IDOMNode = headChildren[j];
+									head.add(headChild);
+								}
+								
+								head.autoMerge = true;
+								
+								return output;
+							}
+						}
+						else throw new HTMLError('Unknown node type');
+					}
+					
+					throw new HTMLError('No HTMLHeadNode found');					
+				}
+				else throw new HTMLError('Unknown document node type');
 			}
 			else return super.write();
 		}
@@ -85,10 +127,12 @@ package org.osflash.html.builders.elements.head
 		 * 
 		 * @return void
 		 */
-		public function merge() : void
+		public function merge(head : HTMLHeadNode = null) : void
 		{
-			mergeTags(HTMLNodeType.STYLE);
-			mergeTags(HTMLNodeType.SCRIPT);
+			if(null == document) throw new HTMLError('No document found.');
+			
+			mergeTags(head || this, HTMLNodeType.STYLE);
+			mergeTags(head || this, HTMLNodeType.SCRIPT);
 		}
 		
 		public function hasConditionalStatements() : Boolean
@@ -103,11 +147,11 @@ package org.osflash.html.builders.elements.head
 		 * @private
 		 * @param type HTMLNodeType of node to merge
 		 */
-		private function mergeTags(type : HTMLNodeType) : void
+		private function mergeTags(head : HTMLHeadNode, type : HTMLNodeType) : void
 		{
 			if(hasConditionalStatements())
-				throw new HTMLError('Unable to merge tags, there are conditional statements.');
-						
+				throw new HTMLError('Unable to merge tags, there are conditional if statements.');
+			
 			const query : String = path.toQuery() + '/*.(@typeName=="' + type.name + '")';
 			const nodes : Vector.<IDOMNode> = document.select(query);
 			const total : int = nodes.length;
@@ -195,7 +239,7 @@ package org.osflash.html.builders.elements.head
 							else if(mergeNode is HTMLScriptNode)
 							{
 								const mergeScriptNode : HTMLScriptNode = HTMLScriptNode(mergeNode);
-								merge.push(mergeScriptNode.src);
+								merge.push(mergeScriptNode.src.text);
 								
 								if(null == mergedNode) 
 									mergedNode = new HTMLScriptNode(new HTMLRawTextNode(''));
@@ -237,10 +281,10 @@ package org.osflash.html.builders.elements.head
 									mergedStyleNode.mimeType = removeStyle.mimeType;
 								if(null != removeStyle.mediaType) 
 									mergedStyleNode.mediaType = removeStyle.mediaType;
-								remove(removeStyle);
+								head.remove(removeStyle);
 							}
 							
-							add(mergedStyleNode);
+							head.add(mergedStyleNode);
 						}
 						else if(mergedNode is HTMLScriptNode)
 						{
@@ -249,7 +293,7 @@ package org.osflash.html.builders.elements.head
 							const numScripts : int = merge.length;
 							for(k = 0; k<numScripts; k++)
 							{
-								mergedScriptNode.src += merge[k];
+								mergedScriptNode.src.text += merge[k];
 							}
 							
 							index = numNodes;
@@ -261,10 +305,10 @@ package org.osflash.html.builders.elements.head
 									mergedScriptNode.mimeType = removeScript.mimeType;
 								if(null != removeScript.charset) 
 									mergedScriptNode.charset = removeScript.charset;
-								remove(removeScript);
+								head.remove(removeScript);
 							}
 							
-							add(mergedScriptNode);
+							head.add(mergedScriptNode);
 						}
 						else throw new HTMLError('Invalid node found');
 					}

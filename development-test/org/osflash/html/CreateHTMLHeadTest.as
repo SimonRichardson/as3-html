@@ -43,6 +43,8 @@ package org.osflash.html
 			const dom : HTMLDocument = new HTMLDocument();
 
 			const head : HTMLHeadNode = new HTMLHeadNode();
+			head.autoMerge = true;
+			
 			head.add(new HTMLTitleNode('HTML Test'));
 
 			head.add(new HTMLMetaCacheContentNode(HTMLMetaCacheContentType.NO_CACHE));
@@ -79,7 +81,9 @@ package org.osflash.html
 			head.add(new HTMLScriptNode(new HTMLRawTextNode('alert(\'Hello World 1\');')));
 
 			dom.add(head);
-
+			
+			info(describeDOM(dom));
+			info(dom.write());
 			info(describeDOM(dom));
 			info(dom.write());
 		}
