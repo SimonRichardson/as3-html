@@ -1,5 +1,6 @@
 package org.osflash.html.builders.elements.common.script
 {
+	import org.osflash.html.builders.elements.common.IHTMLRawTextNode;
 	import org.osflash.html.builders.types.HTMLCharsetType;
 	import org.osflash.html.builders.types.HTMLMIMEType;
 	import org.osflash.html.element.HTMLNodeRestricted;
@@ -18,14 +19,14 @@ package org.osflash.html.builders.elements.common.script
 		/**
 		 * @private
 		 */
-		private var _src : String;
+		private var _src : IHTMLRawTextNode;
 				
 		/**
 		 * @private
 		 */
 		private var _charset : HTMLCharsetType;
 		
-		public function HTMLScriptNode(	src : String,
+		public function HTMLScriptNode(	src : IHTMLRawTextNode,
 										mimeType : HTMLMIMEType = null,
 										charset : HTMLCharsetType = null
 										)
@@ -50,7 +51,7 @@ package org.osflash.html.builders.elements.common.script
 			
 			// This is here because some browsers throw a hissy fit if there is not a closing tag
 			// for script.
-			node.appendChild(src);
+			node.appendChild(src.write());
 			
 			return node;
 		}
@@ -58,8 +59,8 @@ package org.osflash.html.builders.elements.common.script
 		public function get mimeType() : HTMLMIMEType { return _mimeType; }
 		public function set mimeType(value : HTMLMIMEType) : void { _mimeType = value; }
 
-		public function get src() : String { return _src; }
-		public function set src(value : String) : void { _src = value; }
+		public function get src() : IHTMLRawTextNode { return _src; }
+		public function set src(value : IHTMLRawTextNode) : void { _src = value; }
 
 		public function get charset() : HTMLCharsetType { return _charset; }
 		public function set charset(value : HTMLCharsetType) : void { _charset = value; }

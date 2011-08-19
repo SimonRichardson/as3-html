@@ -5,7 +5,7 @@ package org.osflash.html.builders.elements.common
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class HTMLCDATANode extends HTMLNode
+	public class HTMLCDATANode extends HTMLNode implements IHTMLRawTextNode
 	{
 		
 		/**

@@ -5,7 +5,7 @@ package org.osflash.html.builders.elements.common
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class HTMLRawTextNode extends HTMLNode
+	public class HTMLRawTextNode extends HTMLNode implements IHTMLRawTextNode
 	{
 		
 		/**

@@ -1,5 +1,7 @@
 package org.osflash.html
 {
+	import org.osflash.html.builders.elements.common.HTMLRawTextNode;
+	import org.osflash.html.builders.elements.common.HTMLCDATANode;
 	import org.osflash.css.CSSStyle;
 	import org.osflash.css.CSSStyles;
 	import org.osflash.dom.element.utils.describeDOM;
@@ -73,8 +75,8 @@ package org.osflash.html
 			head.add(new HTMLCommentNode('Style finishes here'));
 
 			head.add(new HTMLScriptFileNode('http://www.hello.com/script/global.js'));
-			head.add(new HTMLScriptNode('alert(\'Hello World 0\');'));
-			head.add(new HTMLScriptNode('alert(\'Hello World 1\');'));
+			head.add(new HTMLScriptNode(new HTMLCDATANode('alert(\'Hello World 0\');')));
+			head.add(new HTMLScriptNode(new HTMLRawTextNode('alert(\'Hello World 1\');')));
 
 			dom.add(head);
 

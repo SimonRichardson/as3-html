@@ -1,5 +1,6 @@
 package org.osflash.html.builders.elements.head
 {
+	import org.osflash.html.builders.elements.common.HTMLRawTextNode;
 	import org.osflash.css.CSSStyles;
 	import org.osflash.css.errors.CSSError;
 	import org.osflash.dom.element.IDOMNode;
@@ -197,7 +198,7 @@ package org.osflash.html.builders.elements.head
 								merge.push(mergeScriptNode.src);
 								
 								if(null == mergedNode) 
-									mergedNode = new HTMLScriptNode('');
+									mergedNode = new HTMLScriptNode(new HTMLRawTextNode(''));
 								else
 								{
 									if(!(mergedNode is HTMLScriptNode)) 

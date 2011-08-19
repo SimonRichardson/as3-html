@@ -86,7 +86,7 @@ package org.osflash.html.element
 		/**
 		 * @inheritDoc
 		 */
-		override public function get type() : IDOMElementType { return _type; }
+		override final public function get type() : IDOMElementType { return _type; }
 		
 		public function get typeName() : String { return _type.name; }
 		
