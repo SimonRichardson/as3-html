@@ -1,4 +1,4 @@
-package org.osflash.html.builders.elements.body
+package org.osflash.html.builders.elements.body.anchor
 {
 	import org.osflash.dom.element.IDOMNode;
 	import org.osflash.html.element.HTMLNode;
@@ -9,10 +9,10 @@ package org.osflash.html.builders.elements.body
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
-	public class HTMLANode extends HTMLNodeContainer
+	public class HTMLAnchorNode extends HTMLNodeContainer
 	{
 
-		public function HTMLANode()
+		public function HTMLAnchorNode()
 		{
 			super(HTMLNodeType.A);
 		}
