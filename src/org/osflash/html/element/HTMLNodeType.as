@@ -8,61 +8,75 @@ package org.osflash.html.element
 	public final class HTMLNodeType extends DOMElementType
 	{
 		
-		private static const HTML_NODE : int = 0x100; 
+		private static const HTML_NODE : int = 0x100;
 		
-		public static const HEAD : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0001, 'head');
+		private static var HTML_NODE_ID : int = 0;
 		
-		public static const STYLE : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0002, 'style');
+		public static const HEAD : HTMLNodeType = new HTMLNodeType('head');
 		
-		public static const SCRIPT : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0003, 'script');
+		public static const STYLE : HTMLNodeType = new HTMLNodeType('style');
 		
-		public static const BODY : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0004, 'body');
+		public static const SCRIPT : HTMLNodeType = new HTMLNodeType('script');
 		
-		public static const DIV : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0005, 'div');
+		public static const DIV : HTMLNodeType = new HTMLNodeType('div');
 		
-		public static const SPAN : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0006, 'span');
+		public static const SPAN : HTMLNodeType = new HTMLNodeType('span');
 		
-		public static const A : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0007, 'a');
-		
-		public static const IMG : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0008, 'img');
+		public static const IMG : HTMLNodeType = new HTMLNodeType('img');
 
-		public static const TITLE : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0009, 'title');
+		public static const TITLE : HTMLNodeType = new HTMLNodeType('title');
 		
-		public static const BR : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0010, 'br');
+		public static const P : HTMLNodeType = new HTMLNodeType('p');
 		
-		public static const P : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0011, 'p');
+		public static const COMMENT : HTMLNodeType = new HTMLNodeType('<!--->');
 		
-		public static const COMMENT : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0012, '<!--->');
+		public static const H1 : HTMLNodeType = new HTMLNodeType('h1');
 		
-		public static const H1 : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0013, 'h1');
+		public static const H2 : HTMLNodeType = new HTMLNodeType('h2');
 		
-		public static const H2 : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0014, 'h2');
+		public static const H3 : HTMLNodeType = new HTMLNodeType('h3');
 		
-		public static const H3 : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0015, 'h3');
+		public static const H4 : HTMLNodeType = new HTMLNodeType('h4');
 		
-		public static const H4 : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0016, 'h4');
+		public static const H5 : HTMLNodeType = new HTMLNodeType('h5');
 		
-		public static const H5 : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0017, 'h5');
+		public static const H6 : HTMLNodeType = new HTMLNodeType('h6');
 		
-		public static const H6 : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0018, 'h6');
+		public static const HR : HTMLNodeType = new HTMLNodeType('hr');
 		
-		public static const HR : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0019, 'hr');
+		public static const LINK : HTMLNodeType = new HTMLNodeType('link');
 		
-		public static const LINK : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0020, 'link');
+		public static const META : HTMLNodeType = new HTMLNodeType('meta');
 		
-		public static const META : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0021, 'meta');
+		public static const BASE : HTMLNodeType = new HTMLNodeType('base');
 		
-		public static const BASE : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0022, 'base');
+		public static const NOSCRIPT : HTMLNodeType = new HTMLNodeType('noscript');
 		
-		public static const NOSCRIPT : HTMLNodeType = 
-												new HTMLNodeType(HTML_NODE | 0x0023, 'noscript');
+		public static const CONDITIONAL : HTMLNodeType = new HTMLNodeType('<!--[]-->');
 		
-		public static const CONDITIONAL : HTMLNodeType = 
-												new HTMLNodeType(HTML_NODE | 0x0024, '<!--[]-->');
+		public static const RAW_TEXT : HTMLNodeType = new HTMLNodeType('RAW');
 		
-		public static const RAW_TEXT : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0025, 'RAW');
+		public static const CDATA : HTMLNodeType = new HTMLNodeType('CDATA');
 		
-		public static const CDATA : HTMLNodeType = new HTMLNodeType(HTML_NODE | 0x0026, 'CDATA');
+		public static const A : HTMLNodeType = new HTMLNodeType('a');
+		
+		public static const ABBR : HTMLNodeType = new HTMLNodeType('abbr');
+		
+		public static const ACRONYM : HTMLNodeType = new HTMLNodeType('acronym');
+												
+		public static const ADDRESS : HTMLNodeType = new HTMLNodeType('address');
+		
+		public static const B : HTMLNodeType = new HTMLNodeType('b');
+		
+		public static const BIG : HTMLNodeType = new HTMLNodeType('big');
+		
+		public static const BLOCK_QUOTE : HTMLNodeType = new HTMLNodeType('blockquote');
+												
+		public static const BODY : HTMLNodeType = new HTMLNodeType('body');
+													
+		public static const BR : HTMLNodeType = new HTMLNodeType('br');
+		
+		public static const BUTTON : HTMLNodeType = new HTMLNodeType('button');
 		
 		/**
 		 * @private
@@ -74,9 +88,9 @@ package org.osflash.html.element
 		 */
 		private var _value : String;
 		
-		public function HTMLNodeType(type : int, value : String)
+		public function HTMLNodeType(value : String)
 		{
-			super(type);
+			super(HTML_NODE | (HTML_NODE_ID++));
 			
 			_value = value;
 		}
@@ -86,9 +100,16 @@ package org.osflash.html.element
 			switch(nodeType)
 			{
 				case A:
+				case ABBR:
+				case ACRONYM:
+				case ADDRESS:
+				case B:
 				case BASE:
+				case BIG:
+				case BLOCK_QUOTE:
 				case BODY:
 				case BR:
+				case BUTTON:
 				case CDATA:
 				case COMMENT:
 				case CONDITIONAL:

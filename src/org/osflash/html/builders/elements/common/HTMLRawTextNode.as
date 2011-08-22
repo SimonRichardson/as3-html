@@ -1,11 +1,11 @@
 package org.osflash.html.builders.elements.common
 {
+	import org.osflash.html.element.HTMLNodeRestricted;
 	import org.osflash.html.element.HTMLNodeType;
-	import org.osflash.html.element.HTMLNode;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class HTMLRawTextNode extends HTMLNode implements IHTMLRawTextNode
+	public class HTMLRawTextNode extends HTMLNodeRestricted implements IHTMLRawTextNode
 	{
 		
 		/**
@@ -19,7 +19,7 @@ package org.osflash.html.builders.elements.common
 			
 			_text = text;
 		}
-		
+				
 		/**
 		 * @inheritDoc
 		 */

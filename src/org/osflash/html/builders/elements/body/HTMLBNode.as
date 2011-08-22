@@ -1,16 +1,17 @@
-package org.osflash.html.builders.elements.body.header
+package org.osflash.html.builders.elements.body
 {
 	import org.osflash.html.builders.elements.common.HTMLTextNode;
 	import org.osflash.html.element.HTMLNodeType;
+
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class HTMLH3Node extends HTMLTextNode
+	public class HTMLBNode extends HTMLTextNode
 	{
 
-		public function HTMLH3Node(text : String)
+		public function HTMLBNode(text : String)
 		{
-			super(HTMLNodeType.H3, text);
+			super(HTMLNodeType.B, text);
 		}
 	}
 }
