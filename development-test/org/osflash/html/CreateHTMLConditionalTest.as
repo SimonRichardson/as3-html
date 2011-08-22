@@ -1,7 +1,7 @@
 package org.osflash.html
 {
 	import org.osflash.html.builders.elements.common.HTMLRawTextNode;
-	import org.osflash.html.builders.elements.body.HTMLDivNode;
+	import org.osflash.html.builders.elements.body.HTMLDIVNode;
 	import org.osflash.html.builders.types.HTMLConditionalType;
 	import org.osflash.html.builders.elements.common.comments.HTMLConditionalNode;
 	import org.osflash.dom.element.utils.describeDOM;
@@ -38,49 +38,49 @@ package org.osflash.html
 			const body : HTMLBodyNode = new HTMLBodyNode();
 			
 			const ie : HTMLConditionalNode = new HTMLConditionalNode(HTMLConditionalType.IE);
-			const ieDIV : HTMLDivNode = new HTMLDivNode();
+			const ieDIV : HTMLDIVNode = new HTMLDIVNode();
 			ieDIV.add(new HTMLRawTextNode('IE')); 
 			ie.add(ieDIV);
 			
 			body.add(ie);
 			
 			const ie5 : HTMLConditionalNode = new HTMLConditionalNode(HTMLConditionalType.IE_5);
-			const ie5DIV : HTMLDivNode = new HTMLDivNode();
+			const ie5DIV : HTMLDIVNode = new HTMLDIVNode();
 			ie5DIV.add(new HTMLRawTextNode('IE 5')); 
 			ie5.add(ie5DIV);
 			
 			body.add(ie5);
 			
 			const ie50 : HTMLConditionalNode = new HTMLConditionalNode(HTMLConditionalType.IE_5_0);
-			const ie50DIV : HTMLDivNode = new HTMLDivNode();
+			const ie50DIV : HTMLDIVNode = new HTMLDIVNode();
 			ie50DIV.add(new HTMLRawTextNode('IE 5.0')); 
 			ie50.add(ie50DIV);
 			
 			body.add(ie50);
 			
 			const ie55 : HTMLConditionalNode = new HTMLConditionalNode(HTMLConditionalType.IE_5_5);
-			const ie55DIV : HTMLDivNode = new HTMLDivNode();
+			const ie55DIV : HTMLDIVNode = new HTMLDIVNode();
 			ie55DIV.add(new HTMLRawTextNode('IE 5.5')); 
 			ie55.add(ie55DIV);
 			
 			body.add(ie55);
 			
 			const ie6 : HTMLConditionalNode = new HTMLConditionalNode(HTMLConditionalType.IE_6);
-			const ie6DIV : HTMLDivNode = new HTMLDivNode();
+			const ie6DIV : HTMLDIVNode = new HTMLDIVNode();
 			ie6DIV.add(new HTMLRawTextNode('IE 6')); 
 			ie6.add(ie6DIV);
 			
 			body.add(ie6);
 			
 			const ie7 : HTMLConditionalNode = new HTMLConditionalNode(HTMLConditionalType.IE_7);
-			const ie7DIV : HTMLDivNode = new HTMLDivNode();
+			const ie7DIV : HTMLDIVNode = new HTMLDIVNode();
 			ie7DIV.add(new HTMLRawTextNode('IE 7')); 
 			ie7.add(ie7DIV);
 			
 			body.add(ie7);
 			
 			const ie8 : HTMLConditionalNode = new HTMLConditionalNode(HTMLConditionalType.IE_8);
-			const ie8DIV : HTMLDivNode = new HTMLDivNode();
+			const ie8DIV : HTMLDIVNode = new HTMLDIVNode();
 			ie8DIV.add(new HTMLRawTextNode('IE 8')); 
 			ie8.add(ie8DIV);
 			

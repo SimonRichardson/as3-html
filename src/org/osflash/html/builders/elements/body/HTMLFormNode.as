@@ -1,9 +1,12 @@
 package org.osflash.html.builders.elements.body
 {
+	import org.osflash.dom.element.IDOMNode;
 	import org.osflash.html.builders.types.HTMLEncodeType;
 	import org.osflash.html.builders.types.HTMLMethodType;
+	import org.osflash.html.element.HTMLNode;
 	import org.osflash.html.element.HTMLNodeContainer;
 	import org.osflash.html.element.HTMLNodeType;
+	import org.osflash.html.errors.HTMLError;
 
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
@@ -39,6 +42,26 @@ package org.osflash.html.builders.elements.body
 			_action = action;
 			_methodType = methodType || HTMLMethodType.GET;
 			_encodeType = encodeType || HTMLEncodeType.TEXT_PLAIN;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		override public function addAt(node : IDOMNode, index : int) : IDOMNode
+		{
+			var htmlNode : HTMLNode;
+			if(node is HTMLNode)
+				htmlNode = HTMLNode(node);
+			else throw new HTMLError('You can not add a none HTMLNode to HTMLNode');
+			
+			if(node.type == HTMLNodeType.LEGEND)
+			{
+				if(containsType(node.type)) 
+					throw new HTMLError('You can not add ' + htmlNode.typeName + ' again');
+				else return super.addAt(node, index);
+			}
+			
+			return super.addAt(node, index);
 		}
 
 		/**

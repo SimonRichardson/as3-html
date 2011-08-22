@@ -5,10 +5,10 @@ package org.osflash.html.builders.elements.body
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
-	public class HTMLBrNode extends HTMLNodeRestricted
+	public class HTMLBRNode extends HTMLNodeRestricted
 	{
 
-		public function HTMLBrNode()
+		public function HTMLBRNode()
 		{
 			super(HTMLNodeType.BR);
 		}

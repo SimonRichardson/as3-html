@@ -1,11 +1,11 @@
 package org.osflash.html.builders.elements.body
 {
-	import org.osflash.html.element.HTMLNodeType;
 	import org.osflash.html.builders.elements.common.HTMLTextNode;
+	import org.osflash.html.element.HTMLNodeType;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class HTMLDELNode extends HTMLTextNode
+	public class HTMLINSNode extends HTMLTextNode
 	{
 		
 		/**
@@ -18,9 +18,9 @@ package org.osflash.html.builders.elements.body
 		 */
 		private var _date : Date;
 		
-		public function HTMLDELNode(text : String, cite : String = '', date : Date = null)
+		public function HTMLINSNode(text : String, cite : String = '', date : Date = null)
 		{
-			super(HTMLNodeType.DEL, text);
+			super(HTMLNodeType.INS, text);
 			
 			_cite = cite;
 			_date = date;

@@ -23,14 +23,6 @@ package org.osflash.html.element
 		
 		public static const P : HTMLNodeType = new HTMLNodeType('p');
 		
-		public static const LINK : HTMLNodeType = new HTMLNodeType('link');
-		
-		public static const META : HTMLNodeType = new HTMLNodeType('meta');
-		
-		public static const BASE : HTMLNodeType = new HTMLNodeType('base');
-		
-		public static const NOSCRIPT : HTMLNodeType = new HTMLNodeType('noscript');
-		
 		public static const RAW_TEXT : HTMLNodeType = new HTMLNodeType('RAW');
 		
 		// ORGANISED >>
@@ -44,6 +36,8 @@ package org.osflash.html.element
 		public static const ADDRESS : HTMLNodeType = new HTMLNodeType('address');
 		
 		public static const B : HTMLNodeType = new HTMLNodeType('b');
+		
+		public static const BASE : HTMLNodeType = new HTMLNodeType('base');
 		
 		public static const BIG : HTMLNodeType = new HTMLNodeType('big');
 		
@@ -101,6 +95,26 @@ package org.osflash.html.element
 		
 		public static const INPUT : HTMLNodeType = new HTMLNodeType('input');
 		
+		public static const INS : HTMLNodeType = new HTMLNodeType('ins');
+		
+		public static const LABEL : HTMLNodeType = new HTMLNodeType('label');
+		
+		public static const LEGEND : HTMLNodeType = new HTMLNodeType('legend');
+		
+		public static const LI : HTMLNodeType = new HTMLNodeType('li');
+		
+		public static const LINK : HTMLNodeType = new HTMLNodeType('link');
+		
+		public static const META : HTMLNodeType = new HTMLNodeType('meta');
+		
+		public static const NOSCRIPT : HTMLNodeType = new HTMLNodeType('noscript');
+		
+		public static const OL : HTMLNodeType = new HTMLNodeType('ol');
+		
+		public static const OPT_GROUP : HTMLNodeType = new HTMLNodeType('optgroup');
+		
+		public static const OPTION : HTMLNodeType = new HTMLNodeType('option');
+		
 		/**
 		 * @private
 		 */
@@ -156,9 +170,16 @@ package org.osflash.html.element
 				case HR:
 				case IMG:
 				case INPUT:
+				case INS:
+				case LABEL:
+				case LEGEND:
+				case LI:
 				case LINK:
 				case META:
 				case NOSCRIPT:
+				case OL:
+				case OPT_GROUP:
+				case OPTION:
 				case P:
 				case RAW_TEXT:
 				case SCRIPT:

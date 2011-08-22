@@ -6,7 +6,7 @@ package org.osflash.html.builders.elements.body
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
-	public class HTMLImgNode extends HTMLNode
+	public class HTMLIMGNode extends HTMLNode
 	{
 		
 		/**
@@ -29,7 +29,7 @@ package org.osflash.html.builders.elements.body
 		 */
 		private var _height : CSSConvertableValue;
 		
-		public function HTMLImgNode(	src : String, 
+		public function HTMLIMGNode(	src : String, 
 										alt : String = '', 
 										width : * = null, 
 										height : * = null

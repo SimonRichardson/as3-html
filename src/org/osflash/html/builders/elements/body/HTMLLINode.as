@@ -2,16 +2,15 @@ package org.osflash.html.builders.elements.body
 {
 	import org.osflash.html.element.HTMLNodeContainer;
 	import org.osflash.html.element.HTMLNodeType;
-
 	/**
-	 * @author Simon Richardson - me@simonrichardson.info
+	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class HTMLDIVNode extends HTMLNodeContainer
+	public class HTMLLINode extends HTMLNodeContainer
 	{
 		
-		public function HTMLDIVNode()
+		public function HTMLLINode()
 		{
-			super(HTMLNodeType.DIV);
+			super(HTMLNodeType.LI);
 		}
 	}
 }
