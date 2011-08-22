@@ -1,4 +1,4 @@
-package org.osflash.html.builders.elements.body
+package org.osflash.html.builders.elements.body.table
 {
 	import org.osflash.html.element.HTMLNodeContainer;
 	import org.osflash.html.element.HTMLNodeType;
@@ -12,11 +12,7 @@ package org.osflash.html.builders.elements.body
 		{
 			super(HTMLNodeType.TBODY);
 			
-			validNodeTypes.push(	
-									HTMLNodeType.COL,
-									HTMLNodeType.COL_GROUP,
-									HTMLNodeType.TR
-									);
+			validNodeTypes.push(HTMLNodeType.TR);
 		}
 	}
 }

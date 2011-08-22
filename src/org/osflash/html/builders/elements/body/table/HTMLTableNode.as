@@ -1,4 +1,4 @@
-package org.osflash.html.builders.elements.body
+package org.osflash.html.builders.elements.body.table
 {
 	import org.osflash.html.element.HTMLNodeType;
 	import org.osflash.html.element.HTMLNodeContainer;
