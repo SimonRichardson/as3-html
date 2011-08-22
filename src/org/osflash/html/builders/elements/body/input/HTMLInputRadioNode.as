@@ -14,10 +14,10 @@ package org.osflash.html.builders.elements.body.input
 		
 		public function HTMLInputRadioNode(value : String, checked : Boolean = false)
 		{
+			super(HTMLInputType.RADIO, value);
+			
 			if(null == value) throw new ArgumentError('Value can not be null');
 			if(value.length == 0) throw new ArgumentError('Value can not be empty');
-			
-			super(HTMLInputType.RADIO, value);
 			
 			_checked = checked;
 		}

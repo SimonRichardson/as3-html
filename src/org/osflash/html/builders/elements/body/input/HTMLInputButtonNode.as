@@ -9,10 +9,10 @@ package org.osflash.html.builders.elements.body.input
 
 		public function HTMLInputButtonNode(value : String)
 		{
+			super(HTMLInputType.BUTTON, value);
+			
 			if(null == value) throw new ArgumentError('Value can not be null');
 			if(value.length == 0) throw new ArgumentError('Value can not be empty');
-			
-			super(HTMLInputType.BUTTON, value);
 		}
 	}
 }

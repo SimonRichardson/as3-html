@@ -9,10 +9,10 @@ package org.osflash.html.builders.elements.body.input
 		
 		public function HTMLInputHiddenNode(name : String, value : String)
 		{
+			super(HTMLInputType.HIDDEN, value);
+			
 			if(null == value) throw new ArgumentError('Value can not be null');
 			if(value.length == 0) throw new ArgumentError('Value can not be empty');
-			
-			super(HTMLInputType.HIDDEN, value);
 			
 			this.name = name;
 		}
