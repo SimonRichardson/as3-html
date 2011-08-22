@@ -86,7 +86,7 @@ package org.osflash.html.element
 			if(!(this is IHTMLNodeRestricted))
 			{
 				if(classes.length > 0) node.@['class'] = classes.write();
-				if(inlineStyles.hasValidProperties()) inlineStyles.@style = inlineStyles.write();
+				if(inlineStyles.hasValidProperties()) node.@style = inlineStyles.write();
 			}
 			
 			return node;
@@ -104,7 +104,7 @@ package org.osflash.html.element
 		{
 			super.name = value;
 			
-			_inlineStyle.name = value;
+			if(null != _inlineStyle) _inlineStyle.name = value;
 		}
 		
 		public function get typeName() : String { return _type.name; }

@@ -1,8 +1,8 @@
 package org.osflash.html.element
 {
-	import org.osflash.dom.element.IDOMNode;
 	import org.osflash.dom.dom_namespace;
 	import org.osflash.dom.element.IDOMElement;
+	import org.osflash.dom.element.IDOMNode;
 	import org.osflash.html.errors.HTMLError;
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
@@ -25,29 +25,31 @@ package org.osflash.html.element
 		public function HTMLNodeContainer(type : HTMLNodeType)
 		{
 			super(type);
+			
+			validNodeTypes.push(HTMLNodeType.COMMENT, HTMLNodeType.CONDITIONAL);
 		}
 		
 		/**
 		 * @inheritDoc
 		 */	
-		override final public function addAt(node : IDOMNode, index : int) : IDOMNode
+		override public function addAt(node : IDOMNode, index : int) : IDOMNode
 		{
 			var htmlNode : HTMLNode;
 			if (node is HTMLNode)
 				htmlNode = HTMLNode(node);
 			else throw new HTMLError('You can not add a none HTMLNode to HTMLNode');
-			
 			const numValidNodeTypes : int = validNodeTypes.length;
+			
 			if(numValidNodeTypes > 0)
 			{
-				if(!validNodeTypes.indexOf(node.type))
+				if(validNodeTypes.indexOf(node.type) < 0)
 					throw new HTMLError('You can not add ' + htmlNode.typeName + ' to ' + typeName);
 			}
 			
 			const numInvalidNodeTypes : int = invalidNodeTypes.length;
 			if(numInvalidNodeTypes > 0)
 			{
-				if(invalidNodeTypes.indexOf(node.type))
+				if(invalidNodeTypes.indexOf(node.type) < 0)
 					throw new HTMLError('You can not add ' + htmlNode.typeName + ' to ' + typeName);
 			}
 			

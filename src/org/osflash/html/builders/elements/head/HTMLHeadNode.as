@@ -10,7 +10,7 @@ package org.osflash.html.builders.elements.head
 	import org.osflash.html.builders.elements.common.style.HTMLStyleNode;
 	import org.osflash.html.element.HTMLDocument;
 	import org.osflash.html.element.HTMLNode;
-	import org.osflash.html.element.HTMLNodeRestrictedContainer;
+	import org.osflash.html.element.HTMLNodeContainer;
 	import org.osflash.html.element.HTMLNodeType;
 	import org.osflash.html.errors.HTMLError;
 
@@ -18,7 +18,7 @@ package org.osflash.html.builders.elements.head
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
-	public class HTMLHeadNode extends HTMLNodeRestrictedContainer
+	public class HTMLHeadNode extends HTMLNodeContainer
 	{
 		
 		/**
@@ -31,6 +31,14 @@ package org.osflash.html.builders.elements.head
 			super(HTMLNodeType.HEAD);
 			
 			_autoMerge = autoMerge;
+			
+			validNodeTypes.push(	HTMLNodeType.BASE,
+									HTMLNodeType.LINK,
+									HTMLNodeType.META,
+									HTMLNodeType.SCRIPT,
+									HTMLNodeType.STYLE,
+									HTMLNodeType.TITLE
+									);
 		}
 		
 		/**
@@ -43,25 +51,14 @@ package org.osflash.html.builders.elements.head
 				htmlNode = HTMLNode(node);
 			else throw new HTMLError('You can not add a none HTMLNode to HTMLNode');
 			
-			switch(node.type.type)
+			if(node.type == HTMLNodeType.TITLE)
 			{
-				case HTMLNodeType.BASE.type:
-				case HTMLNodeType.COMMENT.type:
-				case HTMLNodeType.CONDITIONAL.type:
-				case HTMLNodeType.LINK.type:
-				case HTMLNodeType.META.type:
-				case HTMLNodeType.SCRIPT.type:
-				case HTMLNodeType.STYLE.type:
-					return super.addAt(node, index);
-				case HTMLNodeType.TITLE.type:
-					if(containsType(node.type)) 
-						throw new HTMLError('You can not add ' + htmlNode.typeName + ' again');
-					else return super.addAt(node, index);
-				default:
-					throw new HTMLError('You can not add ' + htmlNode.typeName + ' to ' + typeName);
+				if(containsType(node.type)) 
+					throw new HTMLError('You can not add ' + htmlNode.typeName + ' again');
+				else return super.addAt(node, index);
 			}
 			
-			return null;
+			return super.addAt(node, index);
 		}
 		
 		/**

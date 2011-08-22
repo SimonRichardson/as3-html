@@ -1,36 +1,17 @@
 package org.osflash.html.builders.elements.head
 {
-	import org.osflash.html.element.HTMLNodeRestricted;
+	import org.osflash.html.builders.elements.common.HTMLTextNode;
 	import org.osflash.html.element.HTMLNodeType;
+
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
-	public class HTMLTitleNode extends HTMLNodeRestricted
+	public class HTMLTitleNode extends HTMLTextNode
 	{
-		
-		/**
-		 * @private
-		 */
-		private var _content : String;
 
-		public function HTMLTitleNode(content : String = '')
+		public function HTMLTitleNode(text : String = '')
 		{
-			super(HTMLNodeType.TITLE);
-			
-			_content = content;
+			super(HTMLNodeType.TITLE, text);
 		}
-		
-		/**
-		 * @inheritDoc
-		 */	
-		override public function write() : XML
-		{
-			const node : XML = super.write();
-			node.appendChild(content);
-			return node;
-		}
-		
-		public function get content() : String { return _content; }
-		public function set content(value : String) : void { _content = value; }
 	}
 }
