@@ -12,33 +12,16 @@ package org.osflash.html.element
 		
 		private static var HTML_NODE_ID : int = 0;
 		
-		public static const HEAD : HTMLNodeType = new HTMLNodeType('head');
 		
 		public static const STYLE : HTMLNodeType = new HTMLNodeType('style');
 		
 		public static const SCRIPT : HTMLNodeType = new HTMLNodeType('script');
 		
 		public static const SPAN : HTMLNodeType = new HTMLNodeType('span');
-		
-		public static const IMG : HTMLNodeType = new HTMLNodeType('img');
 
 		public static const TITLE : HTMLNodeType = new HTMLNodeType('title');
 		
 		public static const P : HTMLNodeType = new HTMLNodeType('p');
-		
-		public static const H1 : HTMLNodeType = new HTMLNodeType('h1');
-		
-		public static const H2 : HTMLNodeType = new HTMLNodeType('h2');
-		
-		public static const H3 : HTMLNodeType = new HTMLNodeType('h3');
-		
-		public static const H4 : HTMLNodeType = new HTMLNodeType('h4');
-		
-		public static const H5 : HTMLNodeType = new HTMLNodeType('h5');
-		
-		public static const H6 : HTMLNodeType = new HTMLNodeType('h6');
-		
-		public static const HR : HTMLNodeType = new HTMLNodeType('hr');
 		
 		public static const LINK : HTMLNodeType = new HTMLNodeType('link');
 		
@@ -97,6 +80,24 @@ package org.osflash.html.element
 		public static const FIELDSET : HTMLNodeType = new HTMLNodeType('fieldset');
 		
 		public static const FORM : HTMLNodeType = new HTMLNodeType('form');
+		
+		public static const HEAD : HTMLNodeType = new HTMLNodeType('head');
+		
+		public static const H1 : HTMLNodeType = new HTMLNodeType('h1');
+		
+		public static const H2 : HTMLNodeType = new HTMLNodeType('h2');
+		
+		public static const H3 : HTMLNodeType = new HTMLNodeType('h3');
+		
+		public static const H4 : HTMLNodeType = new HTMLNodeType('h4');
+		
+		public static const H5 : HTMLNodeType = new HTMLNodeType('h5');
+		
+		public static const H6 : HTMLNodeType = new HTMLNodeType('h6');
+		
+		public static const HR : HTMLNodeType = new HTMLNodeType('hr');
+		
+		public static const IMG : HTMLNodeType = new HTMLNodeType('img');
 		
 		/**
 		 * @private
