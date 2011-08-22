@@ -13,6 +13,11 @@ package org.osflash.html.builders.elements.body
 		 * @private
 		 */
 		private var _buttonType : HTMLButtonType;
+		
+		/**
+		 * @private
+		 */
+		private var _disabled : Boolean;
 
 		public function HTMLButtonNode(text : String, buttonType : HTMLButtonType)
 		{
@@ -31,6 +36,10 @@ package org.osflash.html.builders.elements.body
 			const node : XML = super.write();
 			
 			node.@type = buttonType.name;
+			node.@name = name;
+			node.@value = text;
+			
+			if(!disabled) node.@disabled = 'disabled';
 			
 			return node;
 		}
@@ -40,7 +49,10 @@ package org.osflash.html.builders.elements.body
 		{ 
 			if(null == value) throw new ArgumentError('value can not be null');
 			
-			_buttonType = value; 
+			_buttonType = value;
 		}
+
+		public function get disabled() : Boolean { return _disabled; }
+		public function set disabled(value : Boolean) : void { _disabled = value; }
 	}
 }
