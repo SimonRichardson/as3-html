@@ -18,8 +18,6 @@ package org.osflash.html.element
 		
 		public static const SCRIPT : HTMLNodeType = new HTMLNodeType('script');
 		
-		public static const DIV : HTMLNodeType = new HTMLNodeType('div');
-		
 		public static const SPAN : HTMLNodeType = new HTMLNodeType('span');
 		
 		public static const IMG : HTMLNodeType = new HTMLNodeType('img');
@@ -80,9 +78,25 @@ package org.osflash.html.element
 		
 		public static const COL : HTMLNodeType = new HTMLNodeType('col');
 		
+		public static const COL_GROUP : HTMLNodeType = new HTMLNodeType('colgroup');
+		
 		public static const COMMENT : HTMLNodeType = new HTMLNodeType('<!--->');
 		
 		public static const CONDITIONAL : HTMLNodeType = new HTMLNodeType('<!--[]-->');
+		
+		public static const DD : HTMLNodeType = new HTMLNodeType('dd');
+		
+		public static const DEL : HTMLNodeType = new HTMLNodeType('del');
+		
+		public static const DIV : HTMLNodeType = new HTMLNodeType('div');
+		
+		public static const DL : HTMLNodeType = new HTMLNodeType('dl');
+		
+		public static const DT : HTMLNodeType = new HTMLNodeType('dt');
+		
+		public static const FIELDSET : HTMLNodeType = new HTMLNodeType('fieldset');
+		
+		public static const FORM : HTMLNodeType = new HTMLNodeType('form');
 		
 		/**
 		 * @private
@@ -119,9 +133,16 @@ package org.osflash.html.element
 				case CAPTION:
 				case CDATA:
 				case COL:
+				case COL_GROUP:
 				case COMMENT:
 				case CONDITIONAL:
+				case DD:
+				case DEL:
 				case DIV:
+				case DL:
+				case DT:
+				case FIELDSET:
+				case FORM:
 				case H1: 
 				case H2:
 				case H3:

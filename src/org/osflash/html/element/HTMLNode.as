@@ -68,6 +68,8 @@ package org.osflash.html.element
 												' a none HTMLNode to a HTMLNode');
 			}
 			
+			
+			
 			return super.addAt(node, index);
 		}
 		
