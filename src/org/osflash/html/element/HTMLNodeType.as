@@ -12,21 +12,6 @@ package org.osflash.html.element
 		
 		private static var HTML_NODE_ID : int = 0;
 		
-		
-		public static const STYLE : HTMLNodeType = new HTMLNodeType('style');
-		
-		public static const SCRIPT : HTMLNodeType = new HTMLNodeType('script');
-		
-		public static const SPAN : HTMLNodeType = new HTMLNodeType('span');
-
-		public static const TITLE : HTMLNodeType = new HTMLNodeType('title');
-		
-		public static const P : HTMLNodeType = new HTMLNodeType('p');
-		
-		public static const RAW_TEXT : HTMLNodeType = new HTMLNodeType('RAW');
-		
-		// ORGANISED >>
-		
 		public static const A : HTMLNodeType = new HTMLNodeType('a');
 		
 		public static const ABBR : HTMLNodeType = new HTMLNodeType('abbr');
@@ -115,6 +100,51 @@ package org.osflash.html.element
 		
 		public static const OPTION : HTMLNodeType = new HTMLNodeType('option');
 		
+		public static const P : HTMLNodeType = new HTMLNodeType('p');
+		
+		public static const PRE : HTMLNodeType = new HTMLNodeType('pre');
+		
+		public static const Q : HTMLNodeType = new HTMLNodeType('q');
+		
+		public static const RAW_TEXT : HTMLNodeType = new HTMLNodeType('RAW');
+		
+		public static const SCRIPT : HTMLNodeType = new HTMLNodeType('script');
+		
+		public static const SELECT : HTMLNodeType = new HTMLNodeType('select');
+		
+		public static const SMALL : HTMLNodeType = new HTMLNodeType('small');
+		
+		public static const SPAN : HTMLNodeType = new HTMLNodeType('span');
+		
+		public static const STYLE : HTMLNodeType = new HTMLNodeType('style');
+		
+		public static const SUB : HTMLNodeType = new HTMLNodeType('sub');
+		
+		public static const SUP : HTMLNodeType = new HTMLNodeType('sup');
+
+		public static const TABLE : HTMLNodeType = new HTMLNodeType('table');
+
+		public static const TBODY : HTMLNodeType = new HTMLNodeType('tbody');
+		
+		public static const TD : HTMLNodeType = new HTMLNodeType('td');
+		
+		public static const TEXT_AREA : HTMLNodeType = new HTMLNodeType('textarea');
+		
+		public static const TFOOT : HTMLNodeType = new HTMLNodeType('tfoot');
+		
+		public static const TH : HTMLNodeType = new HTMLNodeType('th');
+		
+		public static const THEAD : HTMLNodeType = new HTMLNodeType('thead');
+		
+		public static const TITLE : HTMLNodeType = new HTMLNodeType('title');
+		
+		public static const TR : HTMLNodeType = new HTMLNodeType('tr');
+		
+		public static const TT : HTMLNodeType = new HTMLNodeType('tt');
+		
+		public static const UL : HTMLNodeType = new HTMLNodeType('ul');
+		
+		
 		/**
 		 * @private
 		 */
@@ -181,11 +211,27 @@ package org.osflash.html.element
 				case OPT_GROUP:
 				case OPTION:
 				case P:
+				case PRE:
+				case Q:
 				case RAW_TEXT:
+				case SELECT:
 				case SCRIPT:
+				case SMALL:
 				case STYLE:
 				case SPAN:
+				case SUB:
+				case SUP:
+				case TABLE:
+				case TBODY:
+				case TD:
+				case TEXT_AREA:
+				case TFOOT:
+				case TH:
+				case THEAD:
 				case TITLE:
+				case TR:
+				case TT:
+				case UL:
 					return nodeType.value;
 				default:
 					throw new ArgumentError('Unknown HTMLNodeType');
