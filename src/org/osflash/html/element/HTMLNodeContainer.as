@@ -25,8 +25,6 @@ package org.osflash.html.element
 		public function HTMLNodeContainer(type : HTMLNodeType)
 		{
 			super(type);
-			
-			validNodeTypes.push(HTMLNodeType.COMMENT, HTMLNodeType.CONDITIONAL);
 		}
 		
 		/**
@@ -42,14 +40,19 @@ package org.osflash.html.element
 			
 			if(numValidNodeTypes > 0)
 			{
+				validNodeTypes.push(HTMLNodeType.COMMENT, HTMLNodeType.CONDITIONAL);
+				
 				if(validNodeTypes.indexOf(node.type) < 0)
 					throw new HTMLError('You can not add ' + htmlNode.typeName + ' to ' + typeName);
+					
+				validNodeTypes.pop();
+				validNodeTypes.pop();
 			}
 			
 			const numInvalidNodeTypes : int = invalidNodeTypes.length;
 			if(numInvalidNodeTypes > 0)
 			{
-				if(invalidNodeTypes.indexOf(node.type) < 0)
+				if(invalidNodeTypes.indexOf(node.type) >= 0)
 					throw new HTMLError('You can not add ' + htmlNode.typeName + ' to ' + typeName);
 			}
 			

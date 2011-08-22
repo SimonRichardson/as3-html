@@ -64,6 +64,16 @@ package org.osflash.css
 			
 			return style;
 		}
+		
+		public function addStyle(style : CSSStyle) : CSSStyle
+		{
+			if(contains(style.type, style.name)) 
+				throw new CSSError('Style already exists');
+			
+			_styles.push(style);
+			
+			return style;
+		}
 
 		public function remove(type : CSSStyleType, name : String) : CSSStyle
 		{

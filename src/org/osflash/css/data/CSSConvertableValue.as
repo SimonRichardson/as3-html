@@ -49,6 +49,7 @@ package org.osflash.css.data
 		
 		public function CSSConvertableValue()
 		{
+			_value = null;
 		}
 		
 		public function convert(value : Number) : Number
