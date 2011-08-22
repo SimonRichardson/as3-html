@@ -7,10 +7,10 @@ package org.osflash.css.geom
 	{
 		
 		
-		public function CSSPadding(	top : * = 0, 
-									right : * = 0, 
-									bottom : * = 0, 
-									left : * = 0
+		public function CSSPadding(	top : * = null, 
+									right : * = null, 
+									bottom : * = null, 
+									left : * = null
 									)
 		{
 			this.top = top;

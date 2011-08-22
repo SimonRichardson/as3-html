@@ -19,8 +19,8 @@ package org.osflash.css
 		{
 			const buffer : Vector.<String> = new Vector.<String>();
 			
-			if(null != padding) buffer.push(padding.write());
-			if(null != margin) buffer.push(margin.write());
+			if(padding.hasValidProperties()) buffer.push(padding.write());
+			if(margin.hasValidProperties()) buffer.push(margin.write());
 						
 			return buffer.join(' ');
 		}
