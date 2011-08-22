@@ -28,8 +28,6 @@ package org.osflash.html.element
 		
 		public static const P : HTMLNodeType = new HTMLNodeType('p');
 		
-		public static const COMMENT : HTMLNodeType = new HTMLNodeType('<!--->');
-		
 		public static const H1 : HTMLNodeType = new HTMLNodeType('h1');
 		
 		public static const H2 : HTMLNodeType = new HTMLNodeType('h2');
@@ -52,11 +50,9 @@ package org.osflash.html.element
 		
 		public static const NOSCRIPT : HTMLNodeType = new HTMLNodeType('noscript');
 		
-		public static const CONDITIONAL : HTMLNodeType = new HTMLNodeType('<!--[]-->');
-		
 		public static const RAW_TEXT : HTMLNodeType = new HTMLNodeType('RAW');
 		
-		public static const CDATA : HTMLNodeType = new HTMLNodeType('CDATA');
+		// ORGANISED >>
 		
 		public static const A : HTMLNodeType = new HTMLNodeType('a');
 		
@@ -77,6 +73,16 @@ package org.osflash.html.element
 		public static const BR : HTMLNodeType = new HTMLNodeType('br');
 		
 		public static const BUTTON : HTMLNodeType = new HTMLNodeType('button');
+		
+		public static const CAPTION : HTMLNodeType = new HTMLNodeType('caption');
+		
+		public static const CDATA : HTMLNodeType = new HTMLNodeType('CDATA');
+		
+		public static const COL : HTMLNodeType = new HTMLNodeType('col');
+		
+		public static const COMMENT : HTMLNodeType = new HTMLNodeType('<!--->');
+		
+		public static const CONDITIONAL : HTMLNodeType = new HTMLNodeType('<!--[]-->');
 		
 		/**
 		 * @private
@@ -110,7 +116,9 @@ package org.osflash.html.element
 				case BODY:
 				case BR:
 				case BUTTON:
+				case CAPTION:
 				case CDATA:
+				case COL:
 				case COMMENT:
 				case CONDITIONAL:
 				case DIV:
