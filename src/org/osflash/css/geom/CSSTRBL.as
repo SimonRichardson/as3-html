@@ -66,6 +66,11 @@ package org.osflash.css.geom
 			throw new Error('Abstract Method Error');
 		}
 		
+		public function hasValidProperties() : Boolean
+		{
+			return null != top || null != right || null != bottom || null != left;
+		}
+		
 		public function get top() : * { return _top.value; }
 		public function set top(value : *) : void { _top.value = value; }
 

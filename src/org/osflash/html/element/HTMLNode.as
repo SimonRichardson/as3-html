@@ -83,9 +83,10 @@ package org.osflash.html.element
 			
 			if(!(this is IHTMLNodeRestricted))
 			{
-				if(classes.length > 0) classes.write(node);
+				if(classes.length > 0) node.@['class'] = classes.write();
+				if(inlineStyles.hasValidProperties()) inlineStyles.@style = inlineStyles.write();
 			}
-				
+			
 			return node;
 		}
 		
@@ -107,7 +108,7 @@ package org.osflash.html.element
 		public function get typeName() : String { return _type.name; }
 		
 		public function get classes() : CSSClasses { return _classes; }
-		public function get style() : CSSInlineStyle { return _inlineStyle; }
+		public function get inlineStyles() : CSSInlineStyle { return _inlineStyle; }
 		
 		public function get title() : String { return _title; }
 		public function set title(value : String) : void { _title = value; }

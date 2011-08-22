@@ -37,6 +37,9 @@ package org.osflash.css
 			
 			_type = type;
 			_name = name;
+			
+			_margin = new CSSMargin();
+			_padding = new CSSPadding();
 		}
 		
 		public function setPadding(...rest) : CSSStyle
@@ -56,27 +59,24 @@ package org.osflash.css
 			const buffer : Vector.<String> = new Vector.<String>();
 			buffer.push(type.value + name, '{');
 			
-			if(null != _padding) buffer.push(padding.write());
-			if(null != _margin) buffer.push(margin.write());
+			if(padding.hasValidProperties()) buffer.push(padding.write());
+			if(margin.hasValidProperties()) buffer.push(margin.write());
 			
 			buffer.push('}');
 			
 			return buffer.join(' ');
 		}
 		
+		public function hasValidProperties() : Boolean
+		{
+			return padding.hasValidProperties() && margin.hasValidProperties();
+		}
+		
 		public function get type() : CSSStyleType { return _type; }
 		
-		public function get margin() : CSSMargin 
-		{ 
-			if(null == _margin) _margin = new CSSMargin();
-			return _margin; 
-		}
+		public function get margin() : CSSMargin { return _margin; }
 		
-		public function get padding() : CSSPadding 
-		{ 
-			if(null == _padding) _padding = new CSSPadding();
-			return _padding; 
-		}
+		public function get padding() : CSSPadding { return _padding; }
 		
 		public function get name() : String { return _name; }
 		public function set name(value : String) : void

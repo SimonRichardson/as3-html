@@ -42,21 +42,10 @@ package org.osflash.css.classes
 		{
 			return _names.indexOf(name) >= 0;
 		}
-		
-		public function read(xml : XML) : void
+				
+		public function write() : String
 		{
-			const classes : String = xml.@['class'];
-			const parts : Array = classes.split(' ');
-			const total : int = parts.length;
-			for(var i : int = 0; i < total; i++)
-			{
-				_names.push(parts[i]);
-			}
-		}
-		
-		public function write(xml : XML) : void
-		{
-			xml.@['class'] = _names.join(' ');
+			return _names.join(' ');
 		}
 		
 		public function get length() : int { return _names.length; }
