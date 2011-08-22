@@ -17,12 +17,9 @@ package org.osflash.html.builders.elements.body
 									HTMLNodeType.COL,
 									HTMLNodeType.COL_GROUP,
 									HTMLNodeType.TBODY,
-									HTMLNodeType.TD,
 									HTMLNodeType.TFOOT,
-									HTMLNodeType.TH,
 									HTMLNodeType.THEAD,
-									HTMLNodeType.TR,
-									HTMLNodeType.TT
+									HTMLNodeType.TR
 									);
 		}
 	}

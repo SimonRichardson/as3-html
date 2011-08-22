@@ -140,8 +140,6 @@ package org.osflash.html.element
 		
 		public static const TR : HTMLNodeType = new HTMLNodeType('tr');
 		
-		public static const TT : HTMLNodeType = new HTMLNodeType('tt');
-		
 		public static const UL : HTMLNodeType = new HTMLNodeType('ul');
 		
 		
@@ -230,7 +228,6 @@ package org.osflash.html.element
 				case THEAD:
 				case TITLE:
 				case TR:
-				case TT:
 				case UL:
 					return nodeType.value;
 				default:
