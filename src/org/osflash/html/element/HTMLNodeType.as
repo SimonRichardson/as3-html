@@ -99,6 +99,8 @@ package org.osflash.html.element
 		
 		public static const IMG : HTMLNodeType = new HTMLNodeType('img');
 		
+		public static const INPUT : HTMLNodeType = new HTMLNodeType('input');
+		
 		/**
 		 * @private
 		 */
@@ -153,6 +155,7 @@ package org.osflash.html.element
 				case HEAD:
 				case HR:
 				case IMG:
+				case INPUT:
 				case LINK:
 				case META:
 				case NOSCRIPT:

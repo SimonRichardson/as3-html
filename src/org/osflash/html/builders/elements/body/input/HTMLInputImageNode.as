@@ -1,12 +1,11 @@
-package org.osflash.html.builders.elements.body
+package org.osflash.html.builders.elements.body.input
 {
 	import org.osflash.css.data.CSSConvertableValue;
-	import org.osflash.html.element.HTMLNode;
-	import org.osflash.html.element.HTMLNodeType;
+	import org.osflash.html.builders.types.HTMLInputType;
 	/**
-	 * @author Simon Richardson - me@simonrichardson.info
+	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class HTMLImgNode extends HTMLNode
+	public class HTMLInputImageNode extends HTMLInputNode
 	{
 		
 		/**
@@ -29,13 +28,13 @@ package org.osflash.html.builders.elements.body
 		 */
 		private var _height : CSSConvertableValue;
 		
-		public function HTMLImgNode(	src : String, 
-										alt : String = '', 
-										width : * = null, 
-										height : * = null
-										)
+		public function HTMLInputImageNode(	src : String, 
+											alt : String = '', 
+											width : * = null, 
+											height : * = null
+											)
 		{
-			super(HTMLNodeType.IMG);
+			super(HTMLInputType.IMAGE, value);
 			
 			if(null == src) throw new ArgumentError('Src can not be null');
 			if(src.length == 0) throw new ArgumentError('Src can not be empty');
