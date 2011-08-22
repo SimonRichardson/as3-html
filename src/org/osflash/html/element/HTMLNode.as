@@ -1,5 +1,6 @@
 package org.osflash.html.element
 {
+	import org.osflash.css.CSSInlineStyle;
 	import org.osflash.html.errors.HTMLError;
 	import org.osflash.dom.element.IDOMNode;
 	import org.osflash.css.classes.CSSClasses;
@@ -38,6 +39,11 @@ package org.osflash.html.element
 		 */
 		private var _classes : CSSClasses;
 		
+		/**
+		 * @private
+		 */
+		private var _inlineStyle : CSSInlineStyle;
+		
 		public function HTMLNode(type : HTMLNodeType)
 		{
 			super(getUniqueName());
@@ -48,6 +54,7 @@ package org.osflash.html.element
 			_tabIndex = -1;
 			
 			_classes = new CSSClasses();
+			_inlineStyle = new CSSInlineStyle(name);
 		}
 		
 		/**
@@ -87,9 +94,20 @@ package org.osflash.html.element
 		 */
 		override final public function get type() : IDOMElementType { return _type; }
 		
+		/**
+		 * @inheritDoc
+		 */	
+		override public function set name(value : String) : void
+		{
+			super.name = value;
+			
+			_inlineStyle.name = value;
+		}
+		
 		public function get typeName() : String { return _type.name; }
 		
 		public function get classes() : CSSClasses { return _classes; }
+		public function get style() : CSSInlineStyle { return _inlineStyle; }
 		
 		public function get title() : String { return _title; }
 		public function set title(value : String) : void { _title = value; }

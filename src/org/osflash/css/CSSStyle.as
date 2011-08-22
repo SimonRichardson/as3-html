@@ -79,5 +79,12 @@ package org.osflash.css
 		}
 		
 		public function get name() : String { return _name; }
+		public function set name(value : String) : void
+		{
+			if(null == name) throw new ArgumentError('Name can not be null');
+			if(name.length == 0) throw new ArgumentError('Name can not be empty');
+			
+			_name = value;
+		}
 	}
 }

@@ -13,6 +13,8 @@ package org.osflash.css.types
 		
 		public static const CLASS : CSSStyleType = new CSSStyleType('class', '.');
 		
+		public static const INLINE : CSSStyleType = new CSSStyleType('inline', '');
+		
 		/**
 		 * @private
 		 */
@@ -42,9 +44,11 @@ package org.osflash.css.types
 		{
 			switch(type)
 			{
-				case ID: return type.type;
-				case ELEMENT: return type.type;
-				case CLASS: return type.type;
+				case ID:
+				case ELEMENT:
+				case CLASS:
+				case INLINE: 
+					return type.type;
 				default: 
 					throw new CSSError('Unknown CSSStyleType'); 
 			}
@@ -54,9 +58,11 @@ package org.osflash.css.types
 		{
 			switch(type)
 			{
-				case ID: return type.value;
-				case ELEMENT: return type.value;
-				case CLASS: return type.value;
+				case ID:
+				case ELEMENT:
+				case CLASS:
+				case INLINE: 
+					return type.value;
 				default: 
 					throw new CSSError('Unknown CSSStyleType'); 
 			}
