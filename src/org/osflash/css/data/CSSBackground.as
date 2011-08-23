@@ -71,12 +71,38 @@ package org.osflash.css.data
 		
 		public function write() : String
 		{
-			return 'background: ' + getDECtoHEX(_color.convertedValue) + ';';
+			const buffer : Vector.<String> = new Vector.<String>();
+			
+			if(length == 0 && null != color) 
+			{
+				buffer.push(	'background-color:', 
+								getDECtoHEX(_color.convertedValue),
+								';'
+								);
+			}
+			else
+			{
+				buffer.push('background:');
+				if(null != color) buffer.push(getDECtoHEX(_color.convertedValue));
+				
+				const total : int = length;
+				for(var i : int = 0; i < total; i++)
+				{
+					const image : CSSBackgroundImage = _images[i];
+					if(image.hasValidProperties()) buffer.push(image.write());
+					buffer.push(',');
+				}
+				
+				if(buffer[buffer.length - 1] == ',') buffer.pop();
+				buffer.push(';');
+			}
+			
+			return buffer.join(' ');
 		}
 		
 		public function hasValidProperties() : Boolean
 		{
-			return true;
+			return length > 0 || null != color;
 		}
 		
 		public function get color() : * { return _color.value; }

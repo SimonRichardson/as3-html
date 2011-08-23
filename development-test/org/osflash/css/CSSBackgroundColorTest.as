@@ -31,7 +31,7 @@ package org.osflash.css
 			
 			background.color = 'hsl(255, 50%, 10%)';
 			
-			info(background.color);
+			info(background.write());
 		}
 	}
 }

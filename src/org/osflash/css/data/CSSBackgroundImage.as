@@ -10,6 +10,8 @@ package org.osflash.css.data
 	 */
 	public class CSSBackgroundImage
 	{
+
+		use namespace css_namespace;
 		
 		/**
 		 * @private
@@ -50,17 +52,37 @@ package org.osflash.css.data
 		{
 			_imageType = CSSBackgroundImageType.NONE;
 			
+			_parent = null;
+			
 			_size = new CSSPoint();
 			_position = new CSSPoint();
 		}
 		
 		public function write() : String
 		{
-			const buffer : Vector.<String> = new Vector.<String>();
-			if(null != _parent) buffer.push('background-image:');
-			
-			buffer.push(';');
-			return buffer.join(' ');
+			if(imageType == CSSBackgroundImageType.NONE) return '';
+			else if(imageType == CSSBackgroundImageType.INHERIT) return imageType.name;
+			else
+			{
+				const buffer : Vector.<String> = new Vector.<String>();
+				if(null == parent) buffer.push('background-image:');
+				
+				if(image.indexOf('URL') == -1) buffer.push('URL(' + image + ')');
+				else buffer.push(image);
+				
+				if(_position.hasValidProperties()) buffer.push(_position.write());
+				if(_size.hasValidProperties()) buffer.push(_size.write());
+				if(null != _repeat) buffer.push(_repeat.name);
+				if(null != _attachment) buffer.push(_attachment.name);
+				
+				if(null == parent) buffer.push(';');
+				return buffer.join(' ');
+			}
+		}
+		
+		public function hasValidProperties() : Boolean
+		{
+			return imageType != CSSBackgroundImageType.NONE && null != image;
 		}
 		
 		public function get image() : String { return _image; }
