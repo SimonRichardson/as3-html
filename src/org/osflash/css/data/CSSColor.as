@@ -132,6 +132,6 @@ package org.osflash.css.data
 
 		public function get value() : * { return _value; }
 		
-		public function get convertedValue() : int { return _convertedValue; }
+		public function get convertedValue() : uint { return _convertedValue; }
 	}
 }

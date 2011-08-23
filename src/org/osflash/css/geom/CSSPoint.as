@@ -49,7 +49,7 @@ package org.osflash.css.geom
 		}
 		
 		public function get value() : String { return x + ' ' + y; }
-		public function set value(arg : String) : void { setValues(arg.split(' ')); }
+		public function set value(arg : String) : void { setValues.apply(null, arg.split(' ')); }
 				
 		public function get x() : * { return _x.value; }
 		public function set x(value : *) : void { _x.value = value; }

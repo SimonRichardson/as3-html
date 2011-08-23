@@ -1,5 +1,6 @@
 package org.osflash.css.data
 {
+	import org.osflash.css.utils.getDECtoHEX;
 	import org.osflash.css.css_namespace;
 	import org.osflash.css.errors.CSSError;
 	/**
@@ -70,12 +71,12 @@ package org.osflash.css.data
 		
 		public function write() : String
 		{
-			return '';
+			return 'background: ' + getDECtoHEX(_color.convertedValue) + ';';
 		}
 		
 		public function hasValidProperties() : Boolean
 		{
-			return false;
+			return true;
 		}
 		
 		public function get color() : * { return _color.value; }

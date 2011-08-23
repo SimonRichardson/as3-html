@@ -49,6 +49,9 @@ package org.osflash.css.data
 		public function CSSBackgroundImage()
 		{
 			_imageType = CSSBackgroundImageType.NONE;
+			
+			_size = new CSSPoint();
+			_position = new CSSPoint();
 		}
 		
 		public function write() : String
