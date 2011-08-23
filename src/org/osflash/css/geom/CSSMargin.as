@@ -3,7 +3,7 @@ package org.osflash.css.geom
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSMargin extends CSSTRBL
+	public class CSSMargin extends CSSRectangle
 	{
 		
 		

@@ -4,7 +4,7 @@ package org.osflash.css.geom
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSTRBL
+	public class CSSRectangle
 	{
 		/**
 		 * @private
@@ -26,7 +26,7 @@ package org.osflash.css.geom
 		 */
 		private var _left : CSSConvertableValue;
 
-		public function CSSTRBL()
+		public function CSSRectangle()
 		{
 			_top = new CSSConvertableValue();
 			_right = new CSSConvertableValue();

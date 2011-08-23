@@ -3,7 +3,7 @@ package org.osflash.css
 	import org.osflash.css.data.CSSBackground;
 	import org.osflash.css.geom.CSSMargin;
 	import org.osflash.css.geom.CSSPadding;
-	import org.osflash.css.geom.CSSTRBL;
+	import org.osflash.css.geom.CSSRectangle;
 	import org.osflash.css.types.CSSStyleType;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
@@ -24,7 +24,7 @@ package org.osflash.css
 		/**
 		 * @private
 		 */
-		private var _bounds : CSSTRBL;
+		private var _bounds : CSSRectangle;
 		
 		/**
 		 * @private
@@ -50,7 +50,7 @@ package org.osflash.css
 			_type = type;
 			_name = name;
 			
-			_bounds = new CSSTRBL();
+			_bounds = new CSSRectangle();
 			_margin = new CSSMargin();
 			_padding = new CSSPadding();
 			_background = new CSSBackground();
