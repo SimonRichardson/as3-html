@@ -1,9 +1,10 @@
 package org.osflash.css
 {
-	import org.osflash.css.geom.CSSTRBL;
-	import org.osflash.css.types.CSSStyleType;
+	import org.osflash.css.data.CSSBackground;
 	import org.osflash.css.geom.CSSMargin;
 	import org.osflash.css.geom.CSSPadding;
+	import org.osflash.css.geom.CSSTRBL;
+	import org.osflash.css.types.CSSStyleType;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
@@ -38,8 +39,8 @@ package org.osflash.css
 		/**
 		 * @private
 		 */
-		private var _backgroundColor : int;
-		
+		private var _background : CSSBackground;
+				
 		public function CSSStyle(type : CSSStyleType, name : String)
 		{
 			if(null == type) throw new ArgumentError('Type can not be null');
@@ -52,6 +53,7 @@ package org.osflash.css
 			_bounds = new CSSTRBL();
 			_margin = new CSSMargin();
 			_padding = new CSSPadding();
+			_background = new CSSBackground();
 		}
 		
 		public function setPadding(...rest) : CSSStyle
@@ -66,22 +68,28 @@ package org.osflash.css
 			return this;
 		}
 		
+		public function setBackground(...rest) : CSSStyle
+		{
+			background.setValues.apply(null, rest);
+			return this;
+		}
+		
 		public function write() : String
 		{
 			const buffer : Vector.<String> = new Vector.<String>();
-			buffer.push(type.value + name, '{');
+			
+			if(type != CSSStyleType.INLINE) buffer.push(type.value + name, '{');
 			
 			if(padding.hasValidProperties()) buffer.push(padding.write());
 			if(margin.hasValidProperties()) buffer.push(margin.write());
+			if(background.hasValidProperties()) buffer.push(background.write());
 			
 			if(null != top) buffer.push('top:', top, ';');
 			if(null != left) buffer.push('left:', left, ';');
 			if(null != width) buffer.push('width:', width, ';');
 			if(null != height) buffer.push('height:', height, ';');
 			
-			if(backgroundColor >= 0) buffer.push('background-color:', '#ff0000', ';');
-			
-			buffer.push('}');
+			if(type != CSSStyleType.INLINE) buffer.push('}');
 			
 			return buffer.join(' ');
 		}
@@ -97,6 +105,8 @@ package org.osflash.css
 		
 		public function get padding() : CSSPadding { return _padding; }
 		
+		public function get background() : CSSBackground { return _background; }
+		
 		public function get name() : String { return _name; }
 		public function set name(value : String) : void
 		{
@@ -105,9 +115,6 @@ package org.osflash.css
 			
 			_name = value;
 		}
-		
-		public function get backgroundColor() : int { return _backgroundColor; }
-		public function set backgroundColor(value : int) : void { _backgroundColor = value; }
 		
 		public function get top() : * { return _bounds.top; }
 		public function set top(value : *) : void { _bounds.top = value; }

@@ -100,10 +100,7 @@ package org.osflash.css.data
 					_hasConverter = false;
 					_isRelative = false;
 				}
-				else
-				{
-					throw new Error("Unknown string format \"" + str + "\".");
-				}
+				else throw new Error("Unknown string format \"" + str + "\".");
 			}
 			else if (object is int || object is uint || object is Number)
 			{
@@ -134,10 +131,7 @@ package org.osflash.css.data
 				_converter = null;
 				_hasConverter = false;
 			}
-			else
-			{
-				throw new ArgumentError("Given value \"" + object + "\" is from unsupported type.");
-			}
+			else throw new ArgumentError("Value \"" + object + "\" is from unsupported type.");
 		}
 
 		public function get value() : * { return _value; }
