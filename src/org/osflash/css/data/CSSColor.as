@@ -1,7 +1,6 @@
 package org.osflash.css.data
 {
 	import org.osflash.css.utils.convertToFloat;
-	import org.osflash.css.utils.getHSLAtoDEC;
 	import org.osflash.css.utils.getHSLtoDEC;
 	import org.osflash.css.utils.getRGBAtoDEC;
 	import org.osflash.css.utils.getRGBtoDEC;
@@ -16,8 +15,6 @@ package org.osflash.css.data
 		private static const RGBA_PATTERN : RegExp = /rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+),\s*(\d+.\d+|.\d+|\d+)/;
 		
 		private static const HSL_PATTERN : RegExp = /hsl?\(\s*(\d+)\s*,\s*(\d+%|\d+.\d+|.\d+|\d+)\s*,\s*(\d+%|\d+.\d+|.\d+|\d+)/;
-		
-		private static const HSLA_PATTERN : RegExp = /hsla?\(\s*(\d+)\s*,\s*(\d+%)\s*,\s*(\d+%),\s*(\d+.\d+|.\d+|\d+)/;
 		
 		private static const CHAR_HASH_SIGN : int = '#'.charCodeAt(0);
 		
@@ -104,24 +101,6 @@ package org.osflash.css.data
 				}
 				else if (	CHAR_H == str.charCodeAt(0) &&
 							CHAR_S == str.charCodeAt(1) && 
-							CHAR_L == str.charCodeAt(2) &&
-							CHAR_A == str.charCodeAt(3)
-							)
-				{
-					_value = object;
-					if(HSLA_PATTERN.test(object))
-					{
-						const hsla : Object = HSLA_PATTERN.exec(object);
-						_convertedValue = getHSLAtoDEC(	parseFloat(hsla[1]), 
-														convertToFloat(hsla[2]), 
-														convertToFloat(hsla[3]),
-														convertToFloat(hsla[4])
-														);
-					}
-					else throw new ArgumentError("Value \"" + object + "\" is a unsupported type.");
-				}
-				else if (	CHAR_H == str.charCodeAt(0) &&
-							CHAR_S == str.charCodeAt(1) && 
 							CHAR_L == str.charCodeAt(2)
 							)
 				{
@@ -153,6 +132,6 @@ package org.osflash.css.data
 
 		public function get value() : * { return _value; }
 		
-		public function get convertedValue() : int { return _convertedValue;	}
+		public function get convertedValue() : int { return _convertedValue; }
 	}
 }
