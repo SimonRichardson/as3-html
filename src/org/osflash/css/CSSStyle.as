@@ -1,5 +1,6 @@
 package org.osflash.css
 {
+	import org.osflash.css.types.CSSOverflowType;
 	import org.osflash.css.geom.CSSMargin;
 	import org.osflash.css.geom.CSSPadding;
 	import org.osflash.css.geom.CSSRectangle;
@@ -9,6 +10,7 @@ package org.osflash.css
 	import org.osflash.css.types.CSSDirectionType;
 	import org.osflash.css.types.CSSDisplayType;
 	import org.osflash.css.types.CSSStyleType;
+	import org.osflash.css.types.CSSVisibilityType;
 	import org.osflash.css.utils.getDECtoHEX;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
@@ -29,27 +31,12 @@ package org.osflash.css
 		/**
 		 * @private
 		 */
-		private var _bounds : CSSRectangle;
-		
-		/**
-		 * @private
-		 */
-		private var _margin : CSSMargin;
-		
-		/**
-		 * @private
-		 */
-		private var _padding : CSSPadding;
-		
-		/**
-		 * @private
-		 */
-		private var _color : CSSColor;
-		
-		/**
-		 * @private
-		 */
 		private var _background : CSSBackground;
+		
+		/**
+		 * @private
+		 */
+		private var _bounds : CSSRectangle;
 		
 		/**
 		 * @private
@@ -64,12 +51,37 @@ package org.osflash.css
 		/**
 		 * @private
 		 */
+		private var _color : CSSColor;
+		
+		/**
+		 * @private
+		 */
 		private var _display : CSSDisplayType;
 		
 		/**
 		 * @private
 		 */
 		private var _direction : CSSDirectionType;
+		
+		/**
+		 * @private
+		 */
+		private var _margin : CSSMargin;
+		
+		/**
+		 * @private
+		 */
+		private var _overflow : CSSOverflowType;
+		
+		/**
+		 * @private
+		 */
+		private var _padding : CSSPadding;
+		
+		/**
+		 * @private
+		 */
+		private var _visibility : CSSVisibilityType;
 				
 		public function CSSStyle(type : CSSStyleType, name : String)
 		{
@@ -80,13 +92,12 @@ package org.osflash.css
 			_type = type;
 			_name = name;
 			
-			_clip = new CSSRectangle();
+			_background = new CSSBackground();
 			_bounds = new CSSRectangle();
+			_clip = new CSSRectangle();
+			_color = new CSSColor();
 			_margin = new CSSMargin();
 			_padding = new CSSPadding();
-			
-			_color = new CSSColor();
-			_background = new CSSBackground();
 		}
 		
 		public function setPadding(...rest) : CSSStyle
@@ -117,13 +128,15 @@ package org.osflash.css
 		{
 			const buffer : Vector.<String> = new Vector.<String>();
 			
-			if(type != CSSStyleType.INLINE) buffer.push(type.value + name, '{');
+			// TODO: Refactor this, this could become very messy
 			
-			if(null != color) buffer.push('color:', getDECtoHEX(_color.convertedValue), ';');
+			if(type != CSSStyleType.INLINE) buffer.push(type.value + name, '{');
+						
 			if(padding.hasValidProperties()) buffer.push(padding.write());
 			if(margin.hasValidProperties()) buffer.push(margin.write());
 			if(background.hasValidProperties()) buffer.push(background.write());
 			
+			if(null != color) buffer.push('color:', getDECtoHEX(_color.convertedValue), ';');
 			if(clip.hasValidProperties()) buffer.push('clip: ', clip.write(), ';');
 			
 			if(null != top) buffer.push('top:', top, ';');
@@ -131,9 +144,11 @@ package org.osflash.css
 			if(null != width) buffer.push('width:', width, ';');
 			if(null != height) buffer.push('height:', height, ';');
 			
-			if(null != display) buffer.push('display: ', display.name, ';');
 			if(null != clear) buffer.push('clear: ', clear.name, ';');
 			if(null != direction) buffer.push('direction: ', direction.name, ';');
+			if(null != display) buffer.push('display: ', display.name, ';');
+			if(null != overflow) buffer.push('overflow: ', overflow.name, ';');
+			if(null != visibility) buffer.push('visibility: ', visibility.name, ';');
 			
 			if(type != CSSStyleType.INLINE) buffer.push('}');
 			
@@ -165,8 +180,23 @@ package org.osflash.css
 			_name = value;
 		}
 		
+		public function get clear() : CSSClearType { return _clear; }
+		public function set clear(value : CSSClearType) : void { _clear = value; }
+		
 		public function get color() : * { return _color.value; }
 		public function set color(value : *) : void { _color.value = value; }
+		
+		public function get direction() : CSSDirectionType { return _direction; }
+		public function set direction(value : CSSDirectionType) : void { _direction = value; }
+		
+		public function get display() : CSSDisplayType { return _display; }
+		public function set display(value : CSSDisplayType) : void { _display = value; }
+		
+		public function get overflow() : CSSOverflowType { return _overflow; }
+		public function set overflow(value : CSSOverflowType) : void { _overflow = value; }
+		
+		public function get visibility() : CSSVisibilityType { return _visibility; }
+		public function set visibility(value : CSSVisibilityType) : void { _visibility = value; }
 		
 		public function get top() : * { return _bounds.top; }
 		public function set top(value : *) : void { _bounds.top = value; }
@@ -179,14 +209,5 @@ package org.osflash.css
 		
 		public function get height() : * { return _bounds.bottom; }
 		public function set height(value : *) : void { _bounds.bottom = value; }
-		
-		public function get clear() : CSSClearType { return _clear; }
-		public function set clear(value : CSSClearType) : void { _clear = value; }
-		
-		public function get display() : CSSDisplayType { return _display; }
-		public function set display(value : CSSDisplayType) : void { _display = value; }
-		
-		public function get direction() : CSSDirectionType { return _direction; }
-		public function set direction(value : CSSDirectionType) : void { _direction = value; }
 	}
 }
