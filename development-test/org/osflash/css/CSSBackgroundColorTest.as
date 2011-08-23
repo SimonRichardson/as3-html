@@ -16,7 +16,7 @@ package org.osflash.css
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 
 			const background : CSSBackground = new CSSBackground();
-			background.color = 'rgba(255, 0, 255, .5)';
+			background.color = 'hsl(255, 50%, 10%)';
 			
 			info(background.color);
 		}

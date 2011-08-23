@@ -1,6 +1,10 @@
 package org.osflash.css.data
 {
-	import org.osflash.logger.logs.info;
+	import org.osflash.css.utils.convertToFloat;
+	import org.osflash.css.utils.getHSLAtoDEC;
+	import org.osflash.css.utils.getHSLtoDEC;
+	import org.osflash.css.utils.getRGBAtoDEC;
+	import org.osflash.css.utils.getRGBtoDEC;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
@@ -11,6 +15,10 @@ package org.osflash.css.data
 		
 		private static const RGBA_PATTERN : RegExp = /rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+),\s*(\d+.\d+|.\d+|\d+)/;
 		
+		private static const HSL_PATTERN : RegExp = /hsl?\(\s*(\d+)\s*,\s*(\d+%|\d+.\d+|.\d+|\d+)\s*,\s*(\d+%|\d+.\d+|.\d+|\d+)/;
+		
+		private static const HSLA_PATTERN : RegExp = /hsla?\(\s*(\d+)\s*,\s*(\d+%)\s*,\s*(\d+%),\s*(\d+.\d+|.\d+|\d+)/;
+		
 		private static const CHAR_HASH_SIGN : int = '#'.charCodeAt(0);
 		
 		private static const CHAR_R : int = 'r'.charCodeAt(0);
@@ -18,6 +26,12 @@ package org.osflash.css.data
 		private static const CHAR_G : int = 'g'.charCodeAt(0);
 		
 		private static const CHAR_B : int = 'b'.charCodeAt(0);
+		
+		private static const CHAR_H : int = 'h'.charCodeAt(0);
+		
+		private static const CHAR_S : int = 's'.charCodeAt(0);
+		
+		private static const CHAR_L : int = 'l'.charCodeAt(0);
 		
 		private static const CHAR_A : int = 'a'.charCodeAt(0);
 		
@@ -64,11 +78,11 @@ package org.osflash.css.data
 					if(RGBA_PATTERN.test(object))
 					{
 						const rgba : Object = RGBA_PATTERN.exec(object);
-						const r0 : int = parseInt(rgba[1]);
-						const g0 : int = parseInt(rgba[2]);
-						const b0 : int = parseInt(rgba[3]);
-						const a0 : int = parseFloat(rgba[4]);
-						_convertedValue = ((a0 * 255) << 24) | (r0 << 16) | (g0 << 8) | b0;
+						_convertedValue = getRGBAtoDEC(	parseInt(rgba[1]), 
+														parseInt(rgba[2]), 
+														parseInt(rgba[3]),
+														convertToFloat(rgba[4])
+														);
 					}
 					else throw new ArgumentError("Value \"" + object + "\" is a unsupported type.");
 				}
@@ -78,14 +92,47 @@ package org.osflash.css.data
 							)
 				{
 					_value = object;
-					
 					if(RGB_PATTERN.test(object))
 					{
 						const rgb : Object = RGB_PATTERN.exec(object);
-						const r1 : int = parseInt(rgb[1]);
-						const g1 : int = parseInt(rgb[2]);
-						const b1 : int = parseInt(rgb[3]);
-						_convertedValue = (r1 << 16) | (g1 << 8) | b1;
+						_convertedValue = getRGBtoDEC(	parseInt(rgb[1]), 
+														parseInt(rgb[2]), 
+														parseInt(rgb[3])
+														);
+					}
+					else throw new ArgumentError("Value \"" + object + "\" is a unsupported type.");
+				}
+				else if (	CHAR_H == str.charCodeAt(0) &&
+							CHAR_S == str.charCodeAt(1) && 
+							CHAR_L == str.charCodeAt(2) &&
+							CHAR_A == str.charCodeAt(3)
+							)
+				{
+					_value = object;
+					if(HSLA_PATTERN.test(object))
+					{
+						const hsla : Object = HSLA_PATTERN.exec(object);
+						_convertedValue = getHSLAtoDEC(	parseFloat(hsla[1]), 
+														convertToFloat(hsla[2]), 
+														convertToFloat(hsla[3]),
+														convertToFloat(hsla[4])
+														);
+					}
+					else throw new ArgumentError("Value \"" + object + "\" is a unsupported type.");
+				}
+				else if (	CHAR_H == str.charCodeAt(0) &&
+							CHAR_S == str.charCodeAt(1) && 
+							CHAR_L == str.charCodeAt(2)
+							)
+				{
+					_value = object;
+					if(HSL_PATTERN.test(object))
+					{
+						const hsl : Object = HSL_PATTERN.exec(object);
+						_convertedValue = getHSLtoDEC(	parseFloat(hsl[1]), 
+														convertToFloat(hsl[2]), 
+														convertToFloat(hsl[3])
+														);
 					}
 					else throw new ArgumentError("Value \"" + object + "\" is a unsupported type.");
 				}
@@ -102,8 +149,6 @@ package org.osflash.css.data
 				_convertedValue = NaN;
 			}
 			else throw new ArgumentError("Value \"" + object + "\" is from unsupported type.");
-			
-			info(_convertedValue);
 		}
 
 		public function get value() : * { return _value; }
