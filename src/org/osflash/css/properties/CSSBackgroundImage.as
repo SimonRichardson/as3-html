@@ -1,4 +1,4 @@
-package org.osflash.css.data
+package org.osflash.css.properties
 {
 	import org.osflash.css.css_namespace;
 	import org.osflash.css.geom.CSSPoint;

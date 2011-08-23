@@ -63,7 +63,12 @@ package org.osflash.css.geom
 		
 		public function write() : String
 		{
-			throw new Error('Abstract Method Error');
+			return 'rect(' + 
+								top + ', ' + 
+								right + ', '  + 
+								bottom + ', '  + 
+								left + 
+								')';
 		}
 		
 		public function hasValidProperties() : Boolean

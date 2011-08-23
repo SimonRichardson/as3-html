@@ -1,4 +1,4 @@
-package org.osflash.css.data
+package org.osflash.css.properties
 {
 	import org.osflash.css.utils.convertToFloat;
 	import org.osflash.css.utils.getHSLtoDEC;

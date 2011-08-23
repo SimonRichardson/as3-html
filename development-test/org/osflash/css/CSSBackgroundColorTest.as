@@ -1,15 +1,15 @@
 package org.osflash.css
 {
-	import org.osflash.css.data.CSSBackgroundImage;
-	import org.osflash.css.types.CSSBackgroundImageType;
-	import org.osflash.css.data.CSSBackground;
-	import org.osflash.css.types.CSSBackgroundAttachmentType;
-	import org.osflash.css.types.CSSBackgroundRepeatType;
-	import org.osflash.logger.logs.info;
-
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
+	import org.osflash.css.properties.CSSBackground;
+	import org.osflash.css.properties.CSSBackgroundImage;
+	import org.osflash.css.types.CSSBackgroundAttachmentType;
+	import org.osflash.css.types.CSSBackgroundImageType;
+	import org.osflash.css.types.CSSBackgroundRepeatType;
+	import org.osflash.logger.logs.info;
+
 	[SWF(backgroundColor="#333333", frameRate="31", width="480", height="480")]
 	public class CSSBackgroundColorTest extends Sprite
 	{

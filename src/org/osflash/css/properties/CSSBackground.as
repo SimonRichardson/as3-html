@@ -1,8 +1,8 @@
-package org.osflash.css.data
+package org.osflash.css.properties
 {
-	import org.osflash.css.utils.getDECtoHEX;
 	import org.osflash.css.css_namespace;
 	import org.osflash.css.errors.CSSError;
+	import org.osflash.css.utils.getDECtoHEX;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
@@ -75,10 +75,7 @@ package org.osflash.css.data
 			
 			if(length == 0 && null != color) 
 			{
-				buffer.push(	'background-color:', 
-								getDECtoHEX(_color.convertedValue),
-								';'
-								);
+				buffer.push('background-color:', getDECtoHEX(_color.convertedValue), ';');
 			}
 			else
 			{
