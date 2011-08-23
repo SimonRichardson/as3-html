@@ -15,7 +15,7 @@ package org.osflash.css
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSStyle
+	public class CSSStyle implements ICSSOutputWriter
 	{
 		
 		/**

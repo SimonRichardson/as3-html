@@ -1,5 +1,6 @@
 package org.osflash.css.properties
 {
+	import org.osflash.css.ICSSOutputWriter;
 	import org.osflash.css.css_namespace;
 	import org.osflash.css.geom.CSSPoint;
 	import org.osflash.css.types.CSSBackgroundAttachmentType;
@@ -8,7 +9,7 @@ package org.osflash.css.properties
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSBackgroundImage
+	public class CSSBackgroundImage implements ICSSOutputWriter
 	{
 
 		use namespace css_namespace;
