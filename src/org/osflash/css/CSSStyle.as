@@ -1,5 +1,6 @@
 package org.osflash.css
 {
+	import org.osflash.css.types.CSSPositionType;
 	import org.osflash.css.types.CSSOverflowType;
 	import org.osflash.css.geom.CSSMargin;
 	import org.osflash.css.geom.CSSPadding;
@@ -81,6 +82,11 @@ package org.osflash.css
 		/**
 		 * @private
 		 */
+		private var _position : CSSPositionType;
+		
+		/**
+		 * @private
+		 */
 		private var _visibility : CSSVisibilityType;
 				
 		public function CSSStyle(type : CSSStyleType, name : String)
@@ -148,6 +154,7 @@ package org.osflash.css
 			if(null != direction) buffer.push('direction: ', direction.name, ';');
 			if(null != display) buffer.push('display: ', display.name, ';');
 			if(null != overflow) buffer.push('overflow: ', overflow.name, ';');
+			if(null != position) buffer.push('position: ', position.name, ';');
 			if(null != visibility) buffer.push('visibility: ', visibility.name, ';');
 			
 			if(type != CSSStyleType.INLINE) buffer.push('}');
@@ -194,6 +201,9 @@ package org.osflash.css
 		
 		public function get overflow() : CSSOverflowType { return _overflow; }
 		public function set overflow(value : CSSOverflowType) : void { _overflow = value; }
+		
+		public function get position() : CSSPositionType { return _position; }
+		public function set position(value : CSSPositionType) : void { _position = value; }
 		
 		public function get visibility() : CSSVisibilityType { return _visibility; }
 		public function set visibility(value : CSSVisibilityType) : void { _visibility = value; }
