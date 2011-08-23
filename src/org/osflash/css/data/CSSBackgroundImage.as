@@ -11,6 +11,10 @@ package org.osflash.css.data
 	public class CSSBackgroundImage
 	{
 		
+		/**
+		 * @private
+		 */
+		private var _size : CSSPoint;
 		
 		/**
 		 * @private
@@ -47,11 +51,23 @@ package org.osflash.css.data
 			_imageType = CSSBackgroundImageType.NONE;
 		}
 		
+		public function write() : String
+		{
+			const buffer : Vector.<String> = new Vector.<String>();
+			if(null != _parent) buffer.push('background-image:');
+			
+			buffer.push(';');
+			return buffer.join(' ');
+		}
+		
 		public function get image() : String { return _image; }
 		public function set image(value : String) : void { _image = value; }
 		
 		public function get imageType() : CSSBackgroundImageType { return _imageType; }
 		public function set imageType(value : CSSBackgroundImageType) : void { _imageType = value; }
+		
+		public function get size() : String { return _size.value; }
+		public function set size(value : String) : void { _size.value =  value; }
 		
 		public function get position() : String { return _position.value; }
 		public function set position(value : String) : void { _position.value =  value; }
@@ -61,6 +77,12 @@ package org.osflash.css.data
 		
 		public function get y() : * { return _position.y; }
 		public function set y(value : *) : void { _position.y = value; }
+		
+		public function get width() : * { return _size.x; }
+		public function set width(value : *) : void { _size.x = value; }
+		
+		public function get height() : * { return _size.y; }
+		public function set height(value : *) : void { _size.y = value; }
 		
 		public function get repeat() : CSSBackgroundRepeatType { return _repeat; }
 		public function set repeat(value : CSSBackgroundRepeatType) : void { _repeat = value; }
