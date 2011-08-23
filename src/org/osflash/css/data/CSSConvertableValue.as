@@ -1,9 +1,10 @@
 package org.osflash.css.data
 {
+	import org.osflash.css.ICSSOutputWriter;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSConvertableValue
+	public class CSSConvertableValue implements ICSSOutputWriter
 	{
 		
 		private static const CHAR_PERCENT_SIGN : Number = "%".charCodeAt(0);
@@ -61,6 +62,12 @@ package org.osflash.css.data
 			else _convertedValue = value * _percent;
 				
 			return _convertedValue;
+		}
+		
+		public function write() : String
+		{
+			if(null == value) return '';
+			else return value;
 		}
 
 		public function set value(object : *) : void

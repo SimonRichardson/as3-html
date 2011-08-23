@@ -1,12 +1,13 @@
 package org.osflash.css.properties
 {
+	import org.osflash.css.ICSSOutputWriter;
 	import org.osflash.css.css_namespace;
 	import org.osflash.css.errors.CSSError;
 	import org.osflash.css.utils.getDECtoHEX;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSBackground
+	public class CSSBackground implements ICSSOutputWriter
 	{
 
 		use namespace css_namespace;

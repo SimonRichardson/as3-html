@@ -1,10 +1,11 @@
 package org.osflash.css.geom
 {
+	import org.osflash.css.ICSSOutputWriter;
 	import org.osflash.css.data.CSSConvertableValue;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSRectangle
+	public class CSSRectangle implements ICSSOutputWriter
 	{
 		/**
 		 * @private

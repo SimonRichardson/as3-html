@@ -1,5 +1,7 @@
 package org.osflash.css.properties
 {
+	import org.osflash.css.utils.getDECtoHEX;
+	import org.osflash.css.ICSSOutputWriter;
 	import org.osflash.css.utils.convertToFloat;
 	import org.osflash.css.utils.getHSLtoDEC;
 	import org.osflash.css.utils.getRGBAtoDEC;
@@ -7,7 +9,7 @@ package org.osflash.css.properties
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSColor
+	public class CSSColor implements ICSSOutputWriter
 	{
 		
 		private static const RGB_PATTERN : RegExp = /rgb?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/;
@@ -45,6 +47,12 @@ package org.osflash.css.properties
 		public function CSSColor()
 		{
 			_value = null;
+		}
+		
+		public function write() : String
+		{
+			if(null == value) return '';
+			else return '#' + getDECtoHEX(convertedValue);
 		}
 		
 		public function set value(object : *) : void
