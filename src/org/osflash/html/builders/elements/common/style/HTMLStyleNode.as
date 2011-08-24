@@ -1,5 +1,6 @@
 package org.osflash.html.builders.elements.common.style
 {
+	import org.osflash.stream.IStreamOutput;
 	import org.osflash.css.CSSStyle;
 	import org.osflash.css.CSSStyles;
 	import org.osflash.css.css_namespace;
@@ -13,6 +14,7 @@ package org.osflash.html.builders.elements.common.style
 	import org.osflash.html.element.HTMLNodeType;
 	import org.osflash.html.element.IHTMLNodeRestricted;
 	import org.osflash.html.errors.HTMLError;
+	import org.osflash.stream.types.vector.StreamVectorOutput;
 
 
 	/**
@@ -124,8 +126,9 @@ package org.osflash.html.builders.elements.common.style
 				}
 			}
 			
-			const content : String = styles.write();
-			xml.appendChild(content);
+			const output : IStreamOutput = new StreamVectorOutput();
+			styles.write(output);
+			xml.appendChild(output.toString());
 			
 			return xml;
 		}

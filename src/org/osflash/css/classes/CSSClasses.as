@@ -1,9 +1,11 @@
 package org.osflash.css.classes
 {
+	import org.osflash.stream.IStreamOutput;
+	import org.osflash.css.stream.ICSSOutput;
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
-	public class CSSClasses
+	public class CSSClasses implements ICSSOutput
 	{
 		
 		/**
@@ -43,9 +45,9 @@ package org.osflash.css.classes
 			return _names.indexOf(name) >= 0;
 		}
 				
-		public function write() : String
+		public function write(stream : IStreamOutput) : void
 		{
-			return _names.join(' ');
+			stream.writeUTF(_names.join(' '));
 		}
 		
 		public function get length() : int { return _names.length; }

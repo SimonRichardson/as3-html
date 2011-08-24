@@ -1,11 +1,12 @@
 package org.osflash.css.geom
 {
-	import org.osflash.css.ICSSOutputWriter;
+	import org.osflash.stream.IStreamOutput;
 	import org.osflash.css.data.CSSConvertableValue;
+	import org.osflash.css.stream.ICSSOutput;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSPoint implements ICSSOutputWriter
+	public class CSSPoint implements ICSSOutput
 	{
 		/**
 		 * @private
@@ -39,9 +40,12 @@ package org.osflash.css.geom
 			else throw new ArgumentError('Invalid number of arguments sent');
 		}
 		
-		public function write() : String
+		/**
+		 * @inheritDoc
+		 */
+		public function write(stream : IStreamOutput) : void
 		{
-			return x + ' ' + y;
+			stream.writeUTF(x + ' ' + y);
 		}
 		
 		public function hasValidProperties() : Boolean

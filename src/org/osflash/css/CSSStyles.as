@@ -1,11 +1,13 @@
 package org.osflash.css
 {
+	import org.osflash.stream.IStreamOutput;
 	import org.osflash.css.errors.CSSError;
+	import org.osflash.css.stream.ICSSOutput;
 	import org.osflash.css.types.CSSStyleType;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSStyles implements ICSSOutputWriter
+	public class CSSStyles implements ICSSOutput
 	{
 	
 		/**
@@ -132,21 +134,19 @@ package org.osflash.css
 			
 			return _styles[index];
 		}
-				
-		public function write() : String
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function write(stream : IStreamOutput) : void
 		{
 			const total : int = _styles.length;
-			
-			const buffer : Vector.<String> = new Vector.<String>();
-			
 			for(var i : int = 0; i < total; i++)
 			{
 				const style : CSSStyle = _styles[i];
-				
-				buffer.push(style.write());
+				style.write(stream);
+				if(i < total - 1) stream.writeUTF('\n');
 			}
-			
-			return buffer.join(' ');
 		}
 		
 		public function get strict() : Boolean { return _strict; }

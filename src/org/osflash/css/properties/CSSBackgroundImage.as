@@ -1,15 +1,16 @@
 package org.osflash.css.properties
 {
-	import org.osflash.css.ICSSOutputWriter;
+	import org.osflash.stream.IStreamOutput;
 	import org.osflash.css.css_namespace;
 	import org.osflash.css.geom.CSSPoint;
+	import org.osflash.css.stream.ICSSOutput;
 	import org.osflash.css.types.CSSBackgroundAttachmentType;
 	import org.osflash.css.types.CSSBackgroundImageType;
 	import org.osflash.css.types.CSSBackgroundRepeatType;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSBackgroundImage implements ICSSOutputWriter
+	public class CSSBackgroundImage implements ICSSOutput
 	{
 
 		use namespace css_namespace;
@@ -59,25 +60,36 @@ package org.osflash.css.properties
 			_position = new CSSPoint();
 		}
 		
-		public function write() : String
+		/**
+		 * @inheritDoc
+		 */
+		public function write(stream : IStreamOutput) : void
 		{
-			if(imageType == CSSBackgroundImageType.NONE) return '';
-			else if(imageType == CSSBackgroundImageType.INHERIT) return imageType.name;
+			if(imageType == CSSBackgroundImageType.NONE) stream.writeUTF('');
+			else if(imageType == CSSBackgroundImageType.INHERIT) stream.writeUTF(imageType.name);
 			else
 			{
-				const buffer : Vector.<String> = new Vector.<String>();
-				if(null == parent) buffer.push('background-image:');
+				if(null == parent) stream.writeUTF('background-image: ');
 				
-				if(image.indexOf('URL') == -1) buffer.push('URL(' + image + ')');
-				else buffer.push(image);
+				if(image.indexOf('URL') == -1) stream.writeUTF('URL(' + image + ') ');
+				else stream.writeUTF(image + ' ');
 				
-				if(_position.hasValidProperties()) buffer.push(_position.write());
-				if(_size.hasValidProperties()) buffer.push(_size.write());
-				if(null != _repeat) buffer.push(_repeat.name);
-				if(null != _attachment) buffer.push(_attachment.name);
+				if(_position.hasValidProperties()) 
+				{
+					_position.write(stream);
+					stream.writeUTF(' ');
+				}
 				
-				if(null == parent) buffer.push(';');
-				return buffer.join(' ');
+				if(_size.hasValidProperties()) 
+				{
+					_size.write(stream);
+					stream.writeUTF(' ');
+				}
+				
+				if(null != _repeat) stream.writeUTF(_repeat.name + ' ');
+				if(null != _attachment) stream.writeUTF(_attachment.name + ' ');
+				
+				if(null == parent) stream.writeUTF(';');
 			}
 		}
 		

@@ -1,5 +1,6 @@
 package org.osflash.css.geom
 {
+	import org.osflash.stream.IStreamOutput;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
@@ -22,14 +23,9 @@ package org.osflash.css.geom
 		/**
 		 * @inheritDoc
 		 */
-		override public function write() : String
+		override public function write(stream : IStreamOutput) : void
 		{
-			return 'margin: ' + 
-								top + ' ' + 
-								right + ' '  + 
-								bottom + ' '  + 
-								left + 
-								';';
+			stream.writeUTF('margin: ' + top + ' ' + right + ' ' + bottom + ' '  + left + ';');
 		}
 	}
 }

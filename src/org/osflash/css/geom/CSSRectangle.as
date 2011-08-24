@@ -1,11 +1,12 @@
 package org.osflash.css.geom
 {
-	import org.osflash.css.ICSSOutputWriter;
 	import org.osflash.css.data.CSSConvertableValue;
+	import org.osflash.css.stream.ICSSOutput;
+	import org.osflash.stream.IStreamOutput;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSRectangle implements ICSSOutputWriter
+	public class CSSRectangle implements ICSSOutput
 	{
 		/**
 		 * @private
@@ -62,14 +63,12 @@ package org.osflash.css.geom
 			else throw new ArgumentError('Invalid number of arguments sent');
 		}
 		
-		public function write() : String
+		/**
+		 * @inheritDoc
+		 */
+		public function write(stream : IStreamOutput) : void
 		{
-			return 'rect(' + 
-								top + ', ' + 
-								right + ', '  + 
-								bottom + ', '  + 
-								left + 
-								')';
+			stream.writeUTF('rect(' + top + ', ' + right + ', ' + bottom + ', '  + left + ')');
 		}
 		
 		public function hasValidProperties() : Boolean

@@ -1,15 +1,16 @@
 package org.osflash.css.properties
 {
-	import org.osflash.css.utils.getDECtoHEX;
-	import org.osflash.css.ICSSOutputWriter;
+	import org.osflash.stream.IStreamOutput;
+	import org.osflash.css.stream.ICSSOutput;
 	import org.osflash.css.utils.convertToFloat;
+	import org.osflash.css.utils.getDECtoHEX;
 	import org.osflash.css.utils.getHSLtoDEC;
 	import org.osflash.css.utils.getRGBAtoDEC;
 	import org.osflash.css.utils.getRGBtoDEC;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSColor implements ICSSOutputWriter
+	public class CSSColor implements ICSSOutput
 	{
 		
 		private static const RGB_PATTERN : RegExp = /rgb?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/;
@@ -49,10 +50,13 @@ package org.osflash.css.properties
 			_value = null;
 		}
 		
-		public function write() : String
+		/**
+		 * @inheritDoc
+		 */
+		public function write(stream : IStreamOutput) : void
 		{
-			if(null == value) return '';
-			else return '#' + getDECtoHEX(convertedValue);
+			if(null == value) stream.writeUTF('');
+			else stream.writeUTF('#' + getDECtoHEX(convertedValue));
 		}
 		
 		public function set value(object : *) : void

@@ -1,13 +1,14 @@
 package org.osflash.css.properties
 {
-	import org.osflash.css.ICSSOutputWriter;
+	import org.osflash.stream.IStreamOutput;
 	import org.osflash.css.css_namespace;
 	import org.osflash.css.errors.CSSError;
+	import org.osflash.css.stream.ICSSOutput;
 	import org.osflash.css.utils.getDECtoHEX;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSBackground implements ICSSOutputWriter
+	public class CSSBackground implements ICSSOutput
 	{
 
 		use namespace css_namespace;
@@ -70,32 +71,33 @@ package org.osflash.css.properties
 			
 		}
 		
-		public function write() : String
+		/**
+		 * @inheritDoc
+		 */
+		public function write(stream : IStreamOutput) : void
 		{
-			const buffer : Vector.<String> = new Vector.<String>();
-			
 			if(length == 0 && null != color) 
 			{
-				buffer.push('background-color:', getDECtoHEX(_color.convertedValue), ';');
+				stream.writeUTF('background-color: ' + getDECtoHEX(_color.convertedValue) + ';');
 			}
-			else
+			else if(length > 0)
 			{
-				buffer.push('background:');
-				if(null != color) buffer.push(getDECtoHEX(_color.convertedValue));
+				stream.writeUTF('background: ');
+				if(null != color) stream.writeUTF(getDECtoHEX(_color.convertedValue) + ' ');
 				
 				const total : int = length;
 				for(var i : int = 0; i < total; i++)
 				{
 					const image : CSSBackgroundImage = _images[i];
-					if(image.hasValidProperties()) buffer.push(image.write());
-					buffer.push(',');
+					if(image.hasValidProperties()) 
+					{
+						image.write(stream);
+						if(i < total - 1) stream.writeUTF(', ');
+					}
 				}
 				
-				if(buffer[buffer.length - 1] == ',') buffer.pop();
-				buffer.push(';');
+				stream.writeUTF(';');
 			}
-			
-			return buffer.join(' ');
 		}
 		
 		public function hasValidProperties() : Boolean

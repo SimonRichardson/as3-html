@@ -1,10 +1,11 @@
 package org.osflash.css.data
 {
-	import org.osflash.css.ICSSOutputWriter;
+	import org.osflash.stream.IStreamOutput;
+	import org.osflash.css.stream.ICSSOutput;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSConvertableValue implements ICSSOutputWriter
+	public class CSSConvertableValue implements ICSSOutput
 	{
 		
 		private static const CHAR_PERCENT_SIGN : Number = "%".charCodeAt(0);
@@ -64,10 +65,13 @@ package org.osflash.css.data
 			return _convertedValue;
 		}
 		
-		public function write() : String
+		/**
+		 * @inheritDoc
+		 */
+		public function write(stream : IStreamOutput) : void
 		{
-			if(null == value) return '';
-			else return value;
+			if(null == value) stream.writeUTF('');
+			else stream.writeUTF(value);
 		}
 
 		public function set value(object : *) : void

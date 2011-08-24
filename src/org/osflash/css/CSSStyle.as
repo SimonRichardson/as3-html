@@ -1,22 +1,24 @@
 package org.osflash.css
 {
-	import org.osflash.css.types.CSSPositionType;
-	import org.osflash.css.types.CSSOverflowType;
+	import org.osflash.stream.IStreamOutput;
 	import org.osflash.css.geom.CSSMargin;
 	import org.osflash.css.geom.CSSPadding;
 	import org.osflash.css.geom.CSSRectangle;
 	import org.osflash.css.properties.CSSBackground;
 	import org.osflash.css.properties.CSSColor;
+	import org.osflash.css.stream.ICSSOutput;
 	import org.osflash.css.types.CSSClearType;
 	import org.osflash.css.types.CSSDirectionType;
 	import org.osflash.css.types.CSSDisplayType;
+	import org.osflash.css.types.CSSOverflowType;
+	import org.osflash.css.types.CSSPositionType;
 	import org.osflash.css.types.CSSStyleType;
 	import org.osflash.css.types.CSSVisibilityType;
 	import org.osflash.css.utils.getDECtoHEX;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSStyle implements ICSSOutputWriter
+	public class CSSStyle implements ICSSOutput
 	{
 		
 		/**
@@ -130,36 +132,44 @@ package org.osflash.css
 			return this;
 		}
 		
-		public function write() : String
+		public function write(stream : IStreamOutput) : void
 		{
-			const buffer : Vector.<String> = new Vector.<String>();
-			
-			// TODO: Refactor this, this could become very messy
-			
-			if(type != CSSStyleType.INLINE) buffer.push(type.value + name, '{');
+			if(type != CSSStyleType.INLINE) stream.writeUTF(type.value + name + '{');
 						
-			if(padding.hasValidProperties()) buffer.push(padding.write());
-			if(margin.hasValidProperties()) buffer.push(margin.write());
-			if(background.hasValidProperties()) buffer.push(background.write());
+			if(padding.hasValidProperties()) 
+			{
+				padding.write(stream);
+				stream.writeUTF(' ');
+			}
 			
-			if(null != color) buffer.push('color:', getDECtoHEX(_color.convertedValue), ';');
-			if(clip.hasValidProperties()) buffer.push('clip: ', clip.write(), ';');
+			if(margin.hasValidProperties()) 
+			{
+				margin.write(stream);
+				stream.writeUTF(' ');
+			}
 			
-			if(null != top) buffer.push('top:', top, ';');
-			if(null != left) buffer.push('left:', left, ';');
-			if(null != width) buffer.push('width:', width, ';');
-			if(null != height) buffer.push('height:', height, ';');
+			if(background.hasValidProperties()) 
+			{
+				background.write(stream);
+				stream.writeUTF(' ');
+			}
 			
-			if(null != clear) buffer.push('clear: ', clear.name, ';');
-			if(null != direction) buffer.push('direction: ', direction.name, ';');
-			if(null != display) buffer.push('display: ', display.name, ';');
-			if(null != overflow) buffer.push('overflow: ', overflow.name, ';');
-			if(null != position) buffer.push('position: ', position.name, ';');
-			if(null != visibility) buffer.push('visibility: ', visibility.name, ';');
+			if(null != color) stream.writeUTF('color: ' + getDECtoHEX(_color.convertedValue) + '; ');
+			if(clip.hasValidProperties()) stream.writeUTF('clip: ' + clip.write(stream) + '; ');
 			
-			if(type != CSSStyleType.INLINE) buffer.push('}');
+			if(null != top) stream.writeUTF('top: ' + top + '; ');
+			if(null != left) stream.writeUTF('left: ' + left + '; ');
+			if(null != width) stream.writeUTF('width: ' + width + '; ');
+			if(null != height) stream.writeUTF('height: ' + height + '; ');
 			
-			return buffer.join(' ');
+			if(null != clear) stream.writeUTF('clear: ' + clear.name + '; ');
+			if(null != direction) stream.writeUTF('direction: ' + direction.name + '; ');
+			if(null != display) stream.writeUTF('display: ' + display.name + '; ');
+			if(null != overflow) stream.writeUTF('overflow: ' + overflow.name + '; ');
+			if(null != position) stream.writeUTF('position: ' + position.name + '; ');
+			if(null != visibility) stream.writeUTF('visibility: ' + visibility.name + '; ');
+			
+			if(type != CSSStyleType.INLINE) stream.writeUTF('}');
 		}
 		
 		public function hasValidProperties() : Boolean

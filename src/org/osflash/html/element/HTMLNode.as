@@ -1,12 +1,14 @@
 package org.osflash.html.element
 {
 	import org.osflash.css.CSSInlineStyle;
-	import org.osflash.html.errors.HTMLError;
-	import org.osflash.dom.element.IDOMNode;
 	import org.osflash.css.classes.CSSClasses;
 	import org.osflash.dom.element.DOMNode;
 	import org.osflash.dom.element.IDOMElementType;
+	import org.osflash.dom.element.IDOMNode;
+	import org.osflash.html.errors.HTMLError;
 	import org.osflash.html.utils.getUniqueName;
+	import org.osflash.stream.IStreamOutput;
+	import org.osflash.stream.types.vector.StreamVectorOutput;
 
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
@@ -85,8 +87,19 @@ package org.osflash.html.element
 			
 			if(!(this is IHTMLNodeRestricted))
 			{
-				if(classes.length > 0) node.@['class'] = classes.write();
-				if(inlineStyles.hasValidProperties()) node.@style = inlineStyles.write();
+				if(classes.length > 0) 
+				{
+					const output0 : IStreamOutput = new StreamVectorOutput();
+					classes.write(output0);
+					node.@['class'] = output0.toString();
+				}
+				
+				if(inlineStyles.hasValidProperties()) 
+				{
+					const output1 : IStreamOutput = new StreamVectorOutput();
+					classes.write(output1);
+					node.@style = output1.toString();
+				}
 			}
 			
 			return node;
