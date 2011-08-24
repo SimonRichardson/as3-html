@@ -5,6 +5,7 @@ package org.osflash.html.element
 	import org.osflash.dom.element.DOMNode;
 	import org.osflash.dom.element.IDOMElementType;
 	import org.osflash.dom.element.IDOMNode;
+	import org.osflash.html.builders.types.HTMLRevisionType;
 	import org.osflash.html.errors.HTMLError;
 	import org.osflash.html.utils.getUniqueName;
 	import org.osflash.stream.IStreamOutput;
@@ -20,6 +21,11 @@ package org.osflash.html.element
 		 * @private
 		 */
 		private var _type : HTMLNodeType;
+		
+		/**
+		 * @private
+		 */
+		private var _revision : HTMLRevisionType;
 		
 		/**
 		 * @private
@@ -55,6 +61,8 @@ package org.osflash.html.element
 			_type = type;
 			_tabIndex = -1;
 			
+			_revision = HTMLRevisionType.HTML_4;
+			
 			_classes = new CSSClasses();
 			_inlineStyle = new CSSInlineStyle(name);
 		}
@@ -69,8 +77,6 @@ package org.osflash.html.element
 				throw new HTMLError('IllegalOperationError: You can not add ' + 
 												' a none HTMLNode to a HTMLNode');
 			}
-			
-			
 			
 			return super.addAt(node, index);
 		}
@@ -122,7 +128,15 @@ package org.osflash.html.element
 		
 		public function get typeName() : String { return _type.name; }
 		
+		public function get revision() : HTMLRevisionType { return _revision; }
+		public function set revision(value : HTMLRevisionType) : void 
+		{ 
+			if(null == value) throw new ArgumentError('Value can not be null');
+			_revision = value; 
+		}
+		
 		public function get classes() : CSSClasses { return _classes; }
+		
 		public function get inlineStyles() : CSSInlineStyle { return _inlineStyle; }
 		
 		public function get title() : String { return _title; }

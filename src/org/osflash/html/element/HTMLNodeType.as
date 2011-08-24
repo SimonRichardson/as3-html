@@ -20,6 +20,10 @@ package org.osflash.html.element
 												
 		public static const ADDRESS : HTMLNodeType = new HTMLNodeType('address');
 		
+		public static const ARTICLE : HTMLNodeType = new HTMLNodeType('article');
+		
+		public static const ASIDE : HTMLNodeType = new HTMLNodeType('aside');
+		
 		public static const B : HTMLNodeType = new HTMLNodeType('b');
 		
 		public static const BASE : HTMLNodeType = new HTMLNodeType('base');
@@ -58,9 +62,17 @@ package org.osflash.html.element
 		
 		public static const FIELDSET : HTMLNodeType = new HTMLNodeType('fieldset');
 		
+		public static const FIG_CAPTION : HTMLNodeType = new HTMLNodeType('figcaption');
+		
+		public static const FIGURE : HTMLNodeType = new HTMLNodeType('figure');
+		
+		public static const FOOTER : HTMLNodeType = new HTMLNodeType('footer');
+		
 		public static const FORM : HTMLNodeType = new HTMLNodeType('form');
 		
 		public static const HEAD : HTMLNodeType = new HTMLNodeType('head');
+		
+		public static const HEADER : HTMLNodeType = new HTMLNodeType('header');
 		
 		public static const H1 : HTMLNodeType = new HTMLNodeType('h1');
 		
@@ -90,6 +102,8 @@ package org.osflash.html.element
 		
 		public static const LINK : HTMLNodeType = new HTMLNodeType('link');
 		
+		public static const MARK : HTMLNodeType = new HTMLNodeType('mark');
+		
 		public static const META : HTMLNodeType = new HTMLNodeType('meta');
 		
 		public static const NOSCRIPT : HTMLNodeType = new HTMLNodeType('noscript');
@@ -109,6 +123,8 @@ package org.osflash.html.element
 		public static const RAW_TEXT : HTMLNodeType = new HTMLNodeType('RAW');
 		
 		public static const SCRIPT : HTMLNodeType = new HTMLNodeType('script');
+		
+		public static const SECTION : HTMLNodeType = new HTMLNodeType('section');
 		
 		public static const SELECT : HTMLNodeType = new HTMLNodeType('select');
 		
@@ -168,6 +184,8 @@ package org.osflash.html.element
 				case ABBR:
 				case ACRONYM:
 				case ADDRESS:
+				case ARTICLE:
+				case ASIDE:
 				case B:
 				case BASE:
 				case BIG:
@@ -187,6 +205,9 @@ package org.osflash.html.element
 				case DL:
 				case DT:
 				case FIELDSET:
+				case FIG_CAPTION:
+				case FIGURE:
+				case FOOTER:
 				case FORM:
 				case H1: 
 				case H2:
@@ -195,6 +216,7 @@ package org.osflash.html.element
 				case H5:
 				case H6:
 				case HEAD:
+				case HEADER:
 				case HR:
 				case IMG:
 				case INPUT:
@@ -212,6 +234,7 @@ package org.osflash.html.element
 				case PRE:
 				case Q:
 				case RAW_TEXT:
+				case SECTION:
 				case SELECT:
 				case SCRIPT:
 				case SMALL:
