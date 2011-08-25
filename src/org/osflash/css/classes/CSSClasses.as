@@ -1,11 +1,11 @@
 package org.osflash.css.classes
 {
 	import org.osflash.stream.IStreamOutput;
-	import org.osflash.css.stream.ICSSOutput;
+	import org.osflash.stream.IStreamWriter;
 	/**
 	 * @author Simon Richardson - me@simonrichardson.info
 	 */
-	public class CSSClasses implements ICSSOutput
+	public class CSSClasses implements IStreamWriter
 	{
 		
 		/**

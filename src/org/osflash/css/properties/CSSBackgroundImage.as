@@ -1,16 +1,16 @@
 package org.osflash.css.properties
 {
-	import org.osflash.stream.IStreamOutput;
 	import org.osflash.css.css_namespace;
 	import org.osflash.css.geom.CSSPoint;
-	import org.osflash.css.stream.ICSSOutput;
 	import org.osflash.css.types.CSSBackgroundAttachmentType;
 	import org.osflash.css.types.CSSBackgroundImageType;
 	import org.osflash.css.types.CSSBackgroundRepeatType;
+	import org.osflash.stream.IStreamOutput;
+	import org.osflash.stream.IStreamWriter;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSBackgroundImage implements ICSSOutput
+	public class CSSBackgroundImage implements IStreamWriter
 	{
 
 		use namespace css_namespace;

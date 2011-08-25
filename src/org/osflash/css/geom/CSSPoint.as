@@ -1,12 +1,12 @@
 package org.osflash.css.geom
 {
-	import org.osflash.stream.IStreamOutput;
 	import org.osflash.css.data.CSSConvertableValue;
-	import org.osflash.css.stream.ICSSOutput;
+	import org.osflash.stream.IStreamOutput;
+	import org.osflash.stream.IStreamWriter;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSPoint implements ICSSOutput
+	public class CSSPoint implements IStreamWriter
 	{
 		/**
 		 * @private

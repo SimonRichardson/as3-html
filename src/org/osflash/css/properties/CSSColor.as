@@ -1,16 +1,16 @@
 package org.osflash.css.properties
 {
-	import org.osflash.stream.IStreamOutput;
-	import org.osflash.css.stream.ICSSOutput;
 	import org.osflash.css.utils.convertToFloat;
 	import org.osflash.css.utils.getDECtoHEX;
 	import org.osflash.css.utils.getHSLtoDEC;
 	import org.osflash.css.utils.getRGBAtoDEC;
 	import org.osflash.css.utils.getRGBtoDEC;
+	import org.osflash.stream.IStreamOutput;
+	import org.osflash.stream.IStreamWriter;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSColor implements ICSSOutput
+	public class CSSColor implements IStreamWriter
 	{
 		
 		private static const RGB_PATTERN : RegExp = /rgb?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/;

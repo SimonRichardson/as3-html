@@ -1,14 +1,14 @@
 package org.osflash.css.properties
 {
-	import org.osflash.stream.IStreamOutput;
 	import org.osflash.css.css_namespace;
 	import org.osflash.css.errors.CSSError;
-	import org.osflash.css.stream.ICSSOutput;
 	import org.osflash.css.utils.getDECtoHEX;
+	import org.osflash.stream.IStreamOutput;
+	import org.osflash.stream.IStreamWriter;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSBackground implements ICSSOutput
+	public class CSSBackground implements IStreamWriter
 	{
 
 		use namespace css_namespace;

@@ -1,13 +1,13 @@
 package org.osflash.css
 {
-	import org.osflash.stream.IStreamOutput;
 	import org.osflash.css.errors.CSSError;
-	import org.osflash.css.stream.ICSSOutput;
 	import org.osflash.css.types.CSSStyleType;
+	import org.osflash.stream.IStreamOutput;
+	import org.osflash.stream.IStreamWriter;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSStyles implements ICSSOutput
+	public class CSSStyles implements IStreamWriter
 	{
 	
 		/**

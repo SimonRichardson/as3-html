@@ -1,12 +1,10 @@
 package org.osflash.css
 {
-	import org.osflash.stream.IStreamOutput;
 	import org.osflash.css.geom.CSSMargin;
 	import org.osflash.css.geom.CSSPadding;
 	import org.osflash.css.geom.CSSRectangle;
 	import org.osflash.css.properties.CSSBackground;
 	import org.osflash.css.properties.CSSColor;
-	import org.osflash.css.stream.ICSSOutput;
 	import org.osflash.css.types.CSSClearType;
 	import org.osflash.css.types.CSSDirectionType;
 	import org.osflash.css.types.CSSDisplayType;
@@ -15,10 +13,12 @@ package org.osflash.css
 	import org.osflash.css.types.CSSStyleType;
 	import org.osflash.css.types.CSSVisibilityType;
 	import org.osflash.css.utils.getDECtoHEX;
+	import org.osflash.stream.IStreamOutput;
+	import org.osflash.stream.IStreamWriter;
 	/**
 	 * @author Simon Richardson - simon@ustwo.co.uk
 	 */
-	public class CSSStyle implements ICSSOutput
+	public class CSSStyle implements IStreamWriter
 	{
 		
 		/**
